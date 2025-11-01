@@ -1,4 +1,0 @@
-Flask
-Flask-Cors
-firebase-admin
-gunicorn
