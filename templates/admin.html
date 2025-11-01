@@ -695,6 +695,27 @@
                 window.location.reload();
             }
         }
+         // Right-click செய்வதை முடக்குகிறது
+        document.addEventListener('contextmenu', function(e) {
+          e.preventDefault();
+        });
+
+        // Keyboard shortcuts-களை முடக்குகிறது
+        document.addEventListener('keydown', function(e) {
+            // F12 பட்டனை முடக்குகிறது
+            if (e.key === 'F12') {
+                e.preventDefault();
+            }
+            // Ctrl+Shift+I, Ctrl+Shift+J, Ctrl+Shift+C ஆகியவற்றை முடக்குகிறது
+            if (e.ctrlKey && e.shiftKey && ['I', 'J', 'C'].includes(e.key.toUpperCase())) {
+                e.preventDefault();
+            }
+            // Ctrl+U-ஐ முடக்குகிறது
+            if (e.ctrlKey && e.key.toUpperCase() === 'U') {
+                e.preventDefault();
+            }
+        });
     </script>
 </body>
+
 </html>
