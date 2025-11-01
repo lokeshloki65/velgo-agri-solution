@@ -1,0 +1,2292 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Velgo Agrisolutions - Leading Agri Consultancy in Tamil Nadu providing Farm Management, Sustainable Agriculture, and Farm Investment Solutions">
+    <meta name="keywords" content="Agri Consultancy Tamil Nadu, Farm Management India, Sustainable Agriculture, Farm Investment Solutions, Agri Business Consulting">
+    <title>Velgo Agrisolutions Pvt. Ltd. - Smart Farming Solutions</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary-green: #43A047; /* Darker, rich green */
+            --light-green: #66BB6A; /* Mid-tone green */
+            --accent-green: #9CCC65; /* Bright "parrot" green accent */
+            --earth-brown: #8b6f47;
+            --bg-light: #F7FCF7; /* Very light green tint */
+            --white: #ffffff;
+            --text-dark: #2E562F; /* Dark green for text */
+            --text-gray: #616161; /* Dark gray for body text */
+            --error-red: #D32F2F;
+            --pending-orange: #FF9800;
+            --accepted-blue: #2196F3;
+            --completed-green: #43A047; /* NEW: For completed status */
+            --border-light: #e5e7eb; /* NEW: for borders */
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: var(--text-dark);
+            overflow-x: hidden;
+        }
+
+        /* --- Header & Nav --- */
+        .header {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: var(--white);
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            z-index: 1000;
+            transition: all 0.3s ease;
+        }
+        .header.scrolled {
+            box-shadow: 0 4px 20px rgba(0,0,0,0.15);
+        }
+        .nav-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 2rem;
+        }
+        
+        /* MODIFIED: Logo container */
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: var(--primary-green);
+            text-decoration: none; /* In case we wrap in <a> */
+        }
+        
+        /* NEW: Logo Image Styling */
+        .logo-img {
+            height: 70px; /* Adjust height as needed */
+            width: auto;
+            transition: transform 0.3s ease;
+        }
+        .logo-img:hover {
+            transform: scale(1.05) rotate(-3deg);
+        }
+        .logo span { /* Text next to logo */
+            font-size: 1.6rem;
+        }
+        
+        .nav-menu {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+            align-items: center;
+        }
+        .nav-menu a {
+            text-decoration: none;
+            color: var(--text-dark);
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+        .nav-menu a:hover {
+            color: var(--accent-green);
+        }
+        .lang-toggle {
+            background: var(--light-green);
+            color: white;
+            border: none;
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: background 0.3s;
+        }
+        .lang-toggle:hover {
+            background: var(--primary-green);
+        }
+
+        /* User Status & Login Button in Nav */
+        #user-status {
+            font-size: 0.9rem;
+            font-weight: 500;
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+        .login-btn, .logout-btn {
+            background: none;
+            border: 2px solid var(--primary-green);
+            color: var(--primary-green);
+            padding: 0.5rem 1.2rem;
+            border-radius: 20px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.3s;
+            text-decoration: none;    
+            white-space: nowrap;    
+        }
+        .login-btn:hover {
+            background: var(--primary-green);
+            color: white;
+        }
+        .admin-btn {
+            border-color: var(--accent-green);
+            color: var(--accent-green);
+        }
+        .admin-btn:hover {
+            background: var(--accent-green);
+            border-color: var(--accent-green);
+            color: white;
+        }
+        
+        .logout-btn {
+            border-color: var(--error-red);
+            color: var(--error-red);
+        }
+        .logout-btn:hover {
+            background: var(--error-red);
+            color: white;
+        }
+        /* --- End Nav --- */
+
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            color: var(--primary-green);
+            cursor: pointer;
+        }
+
+        /* --- Hero Section --- */
+        .hero {
+            margin-top: 80px; /* Adjusted for 50px logo + padding */
+            height: 90vh;
+            background: linear-gradient(135deg, rgba(67, 160, 71, 0.9), rgba(102, 187, 106, 0.8)), url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 600"><rect fill="%2366BB6A" width="1200" height="600"/><path fill="%2343A047" opacity="0.3" d="M0 300L50 280C100 260 200 220 300 200C400 180 500 180 600 200C700 220 800 260 900 260C1000 260 1100 220 1150 200L1200 180V600H0Z"/></svg>');
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+        }
+        .hero-content {
+            text-align: center;
+            color: white;
+            z-index: 2; /* Ensures content is above leaves */
+            max-width: 900px;
+            padding: 2rem;
+            animation: fadeInUp 1s ease;
+        }
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+        .hero p {
+            font-size: 1.3rem;
+            margin-bottom: 2rem;
+            opacity: 0.95;
+        }
+        .cta-buttons {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+        .btn {
+            padding: 1rem 2.5rem;
+            border: none;
+            border-radius: 50px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+            text-decoration: none;
+            display: inline-block;
+            /* NEW: For spinner */
+            position: relative;
+        }
+        .btn-primary {
+            background: var(--accent-green);
+            color: white;
+            animation: glowPulse 2.5s infinite;
+        }
+        .btn-primary:hover {
+            background: var(--light-green);
+            transform: translateY(-3px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+        }
+        @keyframes glowPulse {
+            0%, 100% {
+                box-shadow: 0 0 10px rgba(156, 204, 101, 0.5), 0 0 20px rgba(156, 204, 101, 0.3);
+            }
+            50% {
+                box-shadow: 0 0 20px rgba(156, 204, 101, 1), 0 0 30px rgba(156, 204, 101, 0.7);
+            }
+        }
+        .btn-secondary {
+            background: white;
+            color: var(--primary-green);
+            border: 2px solid white;
+        }
+        .btn-secondary:hover {
+            background: transparent;
+            color: white;
+            transform: translateY(-3px);
+        }
+        
+        /* NEW: Loading Spinner for Buttons */
+        .btn.loading {
+            color: transparent !important;
+            pointer-events: none;
+        }
+        .btn .btn-spinner {
+            display: none; /* Hidden by default */
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+            width: 20px;
+            height: 20px;
+            border: 3px solid rgba(255,255,255,0.3);
+            border-top-color: var(--white);
+            border-radius: 50%;
+            animation: spin 0.8s linear infinite;
+        }
+        .btn.loading .btn-spinner {
+            display: block;
+        }
+        /* Spinner color for forms (which are on white bg) */
+        .auth-form .btn-primary .btn-spinner,
+        .contact-form .btn-primary .btn-spinner {
+            border-color: rgba(255,255,255,0.3);
+            border-top-color: var(--white);
+        }
+        @keyframes spin {
+            to { transform: translate(-50%, -50%) rotate(360deg); }
+        }
+
+        .btn-book {
+            padding: 0.6rem 1.5rem;
+            font-size: 0.9rem;
+            font-weight: 600;
+            border-radius: 20px;
+            background: var(--primary-green);
+            color: white;
+            margin-top: 1rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        .btn-book:hover {
+            background: var(--accent-green);
+            transform: scale(1.05);
+        }
+
+        /* --- Falling Leaves Animation --- */
+        .falling-leaves {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            z-index: 1; /* Below hero content */
+        }
+        .leaf {
+            position: absolute;
+            top: -10%; /* Start above screen */
+            font-size: 1.5rem;
+            color: var(--accent-green); /* Use theme color */
+            opacity: 0.3; /* Make them subtle */
+            animation-iteration-count: infinite;
+            animation-timing-function: linear;
+        }
+        @keyframes fall {
+            0% { transform: translateY(-10vh) translateX(0) rotate(0); opacity: 0.3; }
+            100% { transform: translateY(110vh) translateX(5vw) rotate(360deg); opacity: 0.3; }
+        }
+        @keyframes fall-windy {
+            0% { transform: translateY(-10vh) translateX(0) rotate(0); opacity: 0.4; }
+            100% { transform: translateY(110vh) translateX(20vw) rotate(720deg); opacity: 0.4; }
+        }
+        @keyframes fall-reverse {
+            0% { transform: translateY(-10vh) translateX(0) rotate(0); opacity: 0.2; }
+            100% { transform: translateY(110vh) translateX(-15vw) rotate(-500deg); opacity: 0.2; }
+        }
+
+        /* --- Services Section --- */
+        .services {
+            padding: 5rem 2rem;
+            background: var(--bg-light);
+        }
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            color: var(--primary-green);
+            margin-bottom: 3rem;
+        }
+        .services-grid {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+        }
+        .service-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 15px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+            transition: all 0.3s;
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+        .service-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 35px rgba(0,0,0,0.15);
+        }
+        .service-card-content {
+            flex-grow: 1;
+        }
+        .service-icon {
+            font-size: 3rem;
+            color: var(--accent-green);
+            margin-bottom: 1rem;
+            transition: transform 0.3s ease; /* Added for hover effect */
+        }
+        .service-card:hover .service-icon {
+            animation: floatIcon 2s ease-in-out infinite;
+        }
+        @keyframes floatIcon {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+
+        .service-card h3 {
+            color: var(--primary-green);
+            margin-bottom: 1rem;
+            font-size: 1.4rem;
+        }
+        .service-card p {
+            color: var(--text-gray);
+            line-height: 1.7;
+        }
+
+        /* --- Other Sections (Why Choose, Testimonials, CTA, Footer) --- */
+        .why-choose { padding: 5rem 2rem; background: white; }
+        .features-grid { max-width: 1200px; margin: 3rem auto 0; display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 2rem; }
+        .feature-item { display: flex; align-items: flex-start; gap: 1rem; }
+        .feature-icon { font-size: 2rem; color: var(--accent-green); min-width: 50px; }
+        .feature-content h4 { color: var(--primary-green); margin-bottom: 0.5rem; }
+        .testimonials { padding: 5rem 2rem; background: var(--bg-light); }
+        .testimonial-slider { max-width: 900px; margin: 3rem auto 0; position: relative; }
+        .testimonial-card { background: white; padding: 3rem; border-radius: 15px; box-shadow: 0 5px 20px rgba(0,0,0,0.1); text-align: center; }
+        .testimonial-text { font-size: 1.2rem; font-style: italic; color: var(--text-gray); margin-bottom: 2rem; line-height: 1.8; }
+        .testimonial-author { font-weight: 600; color: var(--primary-green); font-size: 1.1rem; }
+        .testimonial-role { color: var(--text-gray); font-size: 0.9rem; }
+        .cta-section { padding: 5rem 2rem; background: linear-gradient(135deg, var(--primary-green), var(--light-green)); color: white; text-align: center; }
+        .cta-section h2 { font-size: 2.5rem; margin-bottom: 1rem; }
+        .cta-section p { font-size: 1.2rem; margin-bottom: 2rem; opacity: 0.9; }
+        .footer { background: var(--text-dark); color: white; padding: 3rem 2rem 1rem; }
+        .footer-content { max-width: 1400px; margin: 0 auto; display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 2rem; margin-bottom: 2rem; }
+        .footer-section h3 { color: var(--accent-green); margin-bottom: 1rem; }
+        .footer-section ul { list-style: none; }
+        .footer-section ul li { margin-bottom: 0.5rem; }
+        .footer-section a { color: rgba(255,255,255,0.8); text-decoration: none; transition: color 0.3s; }
+        .footer-section a:hover { color: var(--accent-green); }
+        .social-icons { display: flex; gap: 1rem; margin-top: 1rem; }
+        .social-icons a { width: 40px; height: 40px; background: rgba(255,255,255,0.1); border-radius: 50%; display: flex; align-items: center; justify-content: center; transition: all 0.3s; }
+        .social-icons a:hover { background: var(--accent-green); transform: translateY(-3px); }
+        .footer-bottom { text-align: center; padding-top: 2rem; border-top: 1px solid rgba(255,255,255,0.1); opacity: 0.7; }
+        
+        /* MODIFIED: Footer Credits Link */
+        .footer-credits-link {
+            text-decoration: none;
+            color: inherit;
+        }
+        .footer-credits {
+            opacity: 0.6;
+            font-style: italic;
+            font-weight: 300;
+            transition: opacity 0.3s;
+        }
+        .footer-bottom p:hover .footer-credits {
+            opacity: 1;
+        }
+        /* --- End Other Sections --- */
+
+
+        /* --- Modal Styles (General) --- */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 2000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.7);
+            animation: fadeIn 0.3s;
+            overflow-y: auto;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        .modal-content {
+            background: white;
+            margin: 5% auto;
+            padding: 3rem;
+            border-radius: 15px;
+            max-width: 600px;
+            position: relative;
+            animation: slideDown 0.3s;
+        }
+        @keyframes slideDown {
+            from { transform: translateY(-50px); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
+        }
+        .close-modal {
+            position: absolute;
+            right: 20px;
+            top: 20px;
+            font-size: 2rem;
+            cursor: pointer;
+            color: var(--text-gray);
+            transition: color 0.3s;
+        }
+        .close-modal:hover {
+            color: var(--primary-green);
+        }
+        .modal h2 {
+            color: var(--primary-green);
+            margin-bottom: 2rem;
+        }
+
+        /* --- Consultation & Booking Modal Styles --- */
+        .consultation-options {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+            margin-bottom: 2rem;
+        }
+        .option-btn {
+            padding: 1.5rem;
+            background: var(--bg-light);
+            border: 2px solid var(--accent-green);
+            border-radius: 10px;
+            cursor: pointer;
+            transition: all 0.3s;
+            text-align: left;
+        }
+        .option-btn:hover {
+            background: var(--accent-green);
+            color: white;
+            transform: translateX(10px);
+        }
+        .option-btn i {
+            margin-right: 1rem;
+            font-size: 1.5rem;
+        }
+        .contact-form {
+            display: none; /* Hidden by default */
+        }
+        #bookingModal .contact-form {
+            display: block; /* Visible in booking modal */
+        }
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            color: var(--primary-green);
+            font-weight: 600;
+        }
+        .form-group input,
+        .form-group textarea,
+        .form-group select {
+            width: 100%;
+            padding: 0.8rem;
+            border: 2px solid var(--border-light);
+            border-radius: 8px;
+            font-size: 1rem;
+            transition: border-color 0.3s;
+        }
+        .form-group input[disabled] {
+            background: #f3f4f6;
+            color: var(--text-dark);
+            font-weight: 500;
+        }
+        .form-group input:focus,
+        .form-group textarea:focus,
+        .form-group select:focus {
+            outline: none;
+            border-color: var(--accent-green);
+        }
+
+        /* --- Login Modal Styles --- */
+        #loginModal .modal-content {
+            max-width: 450px;
+        }
+        .login-tabs {
+            display: flex;
+            margin-bottom: 1.5rem;
+            border-bottom: 1px solid var(--border-light);
+        }
+        .tab-btn {
+            flex: 1;
+            padding: 1rem;
+            background: none;
+            border: none;
+            cursor: pointer;
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: var(--text-gray);
+            border-bottom: 3px solid transparent;
+            transition: all 0.3s;
+        }
+        .tab-btn.active {
+            color: var(--primary-green);
+            border-bottom-color: var(--primary-green);
+        }
+        .tab-content {
+            display: none;
+        }
+        .tab-content.active {
+            display: block;
+        }
+        .google-btn {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.75rem;
+            width: 100%;
+            padding: 0.8rem;
+            background: var(--white);
+            color: #444;
+            border: 2px solid var(--border-light);
+            border-radius: 8px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        .google-btn:hover {
+            border-color: #aaa;
+        }
+        .google-btn i {
+            color: #DB4437;
+            font-size: 1.2rem;
+        }
+        .divider {
+            text-align: center;
+            margin: 1.5rem 0;
+            color: var(--text-gray);
+            position: relative;
+        }
+        .divider::before, .divider::after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            width: 40%;
+            height: 1px;
+            background: var(--border-light);
+        }
+        .divider::before { left: 0; }
+        .divider::after { right: 0; }
+        
+        .auth-form .btn-primary {
+            width: 100%;
+            border-radius: 8px;
+        }
+        .auth-error {
+            color: var(--error-red);
+            background: #ffebee;
+            border: 1px solid var(--error-red);
+            border-radius: 8px;
+            padding: 0.75rem;
+            font-size: 0.9rem;
+            text-align: center;
+            margin-top: 1rem;
+            display: none; /* Hidden by default */
+        }
+        /* --- End Login Modal Styles --- */
+
+        
+        /* --- "My Bookings" Modal Styles --- */
+        #myBookingsModal .modal-content {
+            max-width: 800px;
+        }
+        
+        .bookings-tabs {
+            display: flex;
+            margin-bottom: 1.5rem;
+            border-bottom: 1px solid var(--border-light);
+        }
+        
+        /* Uses same .tab-btn style from login modal */
+        /* Uses same .tab-content style from login modal */
+
+        /* MODIFIED: List structure for Active/History */
+        .bookings-list {
+            max-height: 45vh; /* Reduced height */
+            overflow-y: auto;
+            padding-right: 1rem; /* For scrollbar */
+        }
+        #myBookingsModal h3 {
+            font-size: 1.2rem;
+            color: var(--text-dark);
+            margin-top: 1.5rem;
+            margin-bottom: 1rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 2px solid var(--border-light);
+        }
+        #myBookingsModal h3:first-of-type {
+            margin-top: 0;
+        }
+        
+        .booking-card {
+            background: var(--bg-light);
+            border-left: 5px solid var(--primary-green);
+            border-radius: 8px;
+            padding: 1.5rem;
+            margin-bottom: 1rem;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+            /* NEW: Fade-in animation */
+            animation: fadeIn 0.5s ease;
+        }
+        
+        .booking-card-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1rem;
+            flex-wrap: wrap; /* Added for responsive */
+            gap: 1rem; /* Added for responsive */
+        }
+        
+        .booking-card-header h4 { /* Changed from h3 */
+            color: var(--primary-green);
+            font-size: 1.3rem;
+            margin: 0;
+        }
+        
+        /* Status badges for "My Bookings" */
+        .booking-card-header .status {
+            padding: 0.4rem 1rem;
+            border-radius: 20px;
+            font-weight: 600;
+            font-size: 0.9rem;
+            color: var(--white);
+        }
+        .status-pending { background: var(--pending-orange); }
+        .status-accepted { background: var(--accepted-blue); }
+        .status-rejected { background: var(--error-red); }
+        .status-completed { background: var(--completed-green); } /* NEW */
+        
+        .booking-card-body p {
+            margin-bottom: 0.5rem;
+            color: var(--text-gray);
+        }
+        
+        .booking-card-body p strong {
+            color: var(--text-dark);
+            min-width: 120px;
+            display: inline-block;
+        }
+        
+        .booking-status-message {
+            margin-top: 1rem;
+            padding: 1rem;
+            border-radius: 8px;
+            font-weight: 500;
+        }
+        
+        .status-msg-accepted {
+            background: #e3f2fd;
+            color: #1e88e5;
+            border: 1px solid #bbdefb;
+        }
+        /* NEW: Completed message style */
+        .status-msg-completed {
+            background: #e8f5e9;
+            color: var(--primary-green);
+            border: 1px solid #c8e6c9;
+        }
+        
+        .status-msg-rejected {
+            background: #ffebee;
+            color: var(--error-red);
+            border: 1px solid #ffcdd2;
+        }
+        
+        .status-msg-rejected strong {
+            display: block;
+            margin-bottom: 0.25rem;
+        }
+        
+        .no-bookings {
+            text-align: center;
+            padding: 2rem;
+            color: var(--text-gray);
+            font-size: 1.1rem;
+        }
+
+        /* NEW: Status Tracker ("Flipkart Style") */
+        .status-tracker {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-top: 1.5rem;
+            padding-top: 1.5rem;
+            border-top: 1px solid var(--border-light);
+        }
+        .tracker-step {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            position: relative;
+            width: 33.3%;
+            color: var(--text-gray);
+        }
+        .tracker-step-icon {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: var(--border-light);
+            color: var(--text-gray);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+            border: 4px solid var(--bg-light);
+            z-index: 2;
+        }
+        .tracker-step-label {
+            font-size: 0.9rem;
+            font-weight: 600;
+            margin-top: 0.5rem;
+        }
+        /* Line connecting steps */
+        .tracker-step:not(:last-child)::after {
+            content: '';
+            position: absolute;
+            top: 20px; /* Center with icon */
+            left: 50%;
+            width: 100%;
+            height: 4px;
+            background: var(--border-light);
+            z-index: 1;
+        }
+        
+        /* Active/Completed states */
+        .tracker-step.completed .tracker-step-icon {
+            background: var(--primary-green);
+            color: white;
+        }
+        .tracker-step.completed {
+            color: var(--text-dark);
+        }
+        .tracker-step.completed:after {
+            background: var(--primary-green);
+        }
+
+        /* NEW: Active Step */
+        .tracker-step.active .tracker-step-icon {
+            background: var(--pending-orange);
+            color: white;
+        }
+        .tracker-step.active {
+            color: var(--text-dark);
+        }
+        .tracker-step.active ~ .tracker-step::after {
+            background: var(--border-light); /* Line after active is gray */
+        }
+        .tracker-step.active ~ .tracker-step {
+            color: var(--text-gray); /* Text for steps after active is gray */
+        }
+        .tracker-step.active ~ .tracker-step .tracker-step-icon {
+             background: var(--border-light); /* Icon for steps after active is gray */
+             color: var(--text-gray);
+        }
+
+
+        /* Rejected state */
+        .tracker-step.rejected .tracker-step-icon {
+            background: var(--error-red);
+            color: white;
+        }
+        .tracker-step.rejected {
+            color: var(--error-red);
+        }
+        .tracker-step.rejected ~ .tracker-step::after {
+            background: var(--border-light) !important; /* Stop line from turning green */
+        }
+        .tracker-step.rejected ~ .tracker-step {
+            color: var(--text-gray); /* Text for steps after rejected is gray */
+        }
+         .tracker-step.rejected ~ .tracker-step .tracker-step-icon {
+             background: var(--border-light); /* Icon for steps after rejected is gray */
+             color: var(--text-gray);
+        }
+        /* --- End "My Bookings" Styles --- */
+
+
+        /* --- Floating Buttons (WhatsApp, Chat) --- */
+        .whatsapp-float {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 60px;
+            height: 60px;
+            background: #25D366;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            color: white;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+            cursor: pointer;
+            z-index: 1000;
+            transition: all 0.3s;
+            animation: pulse 2s infinite;
+        }
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+        }
+        .whatsapp-float:hover {
+            transform: scale(1.15);
+            box-shadow: 0 6px 25px rgba(0,0,0,0.3);
+        }
+        .chatbot-toggle {
+            position: fixed;
+            bottom: 30px;
+            left: 30px;
+            width: 60px;
+            height: 60px;
+            background: var(--primary-green);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            color: white;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+            cursor: pointer;
+            z-index: 1000;
+            transition: all 0.3s;
+        }
+        .chatbot-toggle:hover {
+            transform: scale(1.1);
+            background: var(--light-green);
+        }
+        .chatbot-window { display: none; position: fixed; bottom: 100px; left: 30px; width: 350px; height: 500px; background: white; border-radius: 15px; box-shadow: 0 10px 40px rgba(0,0,0,0.2); z-index: 1000; flex-direction: column; }
+        .chatbot-header { background: var(--primary-green); color: white; padding: 1rem; border-radius: 15px 15px 0 0; display: flex; justify-content: space-between; align-items: center; }
+        .chatbot-messages { flex: 1; padding: 1rem; overflow-y: auto; }
+        .chatbot-input-area { padding: 1rem; border-top: 1px solid var(--border-light); display: flex; gap: 0.5rem; }
+        .chatbot-input { flex: 1; padding: 0.8rem; border: 2px solid var(--border-light); border-radius: 20px; outline: none; }
+        .chatbot-send { background: var(--accent-green); color: white; border: none; padding: 0.8rem 1.5rem; border-radius: 20px; cursor: pointer; }
+        
+        /* NEW: Chatbot message styling */
+        .chat-message {
+            padding: 0.8rem;
+            border-radius: 10px;
+            margin-bottom: 1rem;
+            max-width: 85%;
+            line-height: 1.4;
+        }
+        .chat-message.user {
+            background: var(--accent-green);
+            color: white;
+            margin-left: auto;
+            text-align: right;
+        }
+        .chat-message.bot {
+            background: var(--bg-light);
+            color: var(--text-dark);
+            margin-right: auto;
+        }
+        .chat-message.bot.loading {
+            display: flex;
+            gap: 10px;
+            align-items: center;
+        }
+        /* NEW: Bot typing indicator */
+        .typing-dots {
+            height: 100%;
+            display: inline-block;
+            padding: 0 5px;
+        }
+        .typing-dots span {
+            width: 8px;
+            height: 8px;
+            background-color: var(--text-gray);
+            border-radius: 50%;
+            display: inline-block;
+            animation: bounce 1.4s infinite ease-in-out both;
+        }
+        .typing-dots span:nth-child(1) { animation-delay: -0.32s; }
+        .typing-dots span:nth-child(2) { animation-delay: -0.16s; }
+        @keyframes bounce {
+            0%, 80%, 100% { transform: scale(0); }
+            40% { transform: scale(1.0); }
+        }
+
+
+        /* --- Responsive Design --- */
+        @media (max-width: 992px) {
+            /* MODIFIED: Make top padding match header height */
+            .hero { margin-top: 70px; }    
+            
+            .nav-container {
+                padding: 0.5rem 1.5rem; /* Smaller padding */
+            }
+            .logo-img { height: 40px; } /* Smaller logo */
+            .logo span { font-size: 1.2rem; }
+
+            .nav-menu {
+                position: fixed;
+                left: -100%;
+                top: 70px; /* Matches new header height */
+                flex-direction: column;
+                background: white;
+                width: 100%;
+                height: calc(100vh - 70px); /* Full height minus header */
+                padding: 2rem;
+                box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+                transition: left 0.3s;
+                align-items: flex-start;
+                overflow-y: auto; /* Allow scrolling on mobile menu */
+            }
+            .nav-menu.active {
+                left: 0;
+            }
+            #user-status {
+                margin-top: 1rem;
+                width: 100%;
+                flex-direction: column;
+                align-items: stretch;
+                gap: 1rem; /* Added gap */
+            }
+            .login-btn, .logout-btn, .admin-btn {
+                width: 100%;
+                text-align: center;
+                display: block;
+                margin-top: 0.5rem;
+                margin-left: 0; /* Reset margin */
+            }
+            .mobile-menu-btn {
+                display: block;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .hero h1 { font-size: 2rem; }
+            .hero p { font-size: 1rem; }
+            .cta-buttons { flex-direction: column; }
+            .section-title { font-size: 1.8rem; }
+            .chatbot-window { width: calc(100% - 60px); left: 30px; right: 30px; }
+            .modal-content { width: 90%; padding: 1.5rem; margin-top: 10%; }
+            /* NEW: Responsive tracker */
+            .tracker-step-label { font-size: 0.8rem; }
+            .tracker-step-icon { width: 30px; height: 30px; font-size: 1rem; border-width: 3px; }
+            .tracker-step:not(:last-child)::after { top: 15px; height: 3px; }
+        }
+    </style>
+</head>
+<body>
+    <header class="header" id="header">
+        <nav class="nav-container">
+            <a href="#home" class="logo">
+<img src="{{ url_for('static', filename='velgo.jpg') }}" alt="Velgo Agrisolutions Logo" class="logo-img">                <span data-en="Velgo Agrisolutions" data-ta="வெல்கோ வேளாண்மை">Velgo Agrisolutions</span>
+            </a>
+            <ul class="nav-menu" id="navMenu">
+                <li><a href="#home" data-en="Home" data-ta="முகப்பு">Home</a></li>
+                <li><a href="#services" data-en="Services" data-ta="சேவைகள்">Services</a></li>
+                <li><a href="#about" data-en="About" data-ta="எங்களை பற்றி">About</a></li>
+                <li id="my-bookings-nav-item" style="display: none;">
+                    <a href="#" onclick="openMyBookingsModal()" data-en="My Bookings" data-ta="என் பதிவுகள்">My Bookings</a>
+                </li>
+                <li><a href="#projects" data-en="Projects" data-ta="திட்டங்கள்">Projects</a></li>
+                <li><a href="#contact" data-en="Contact" data-ta="தொடர்பு">Contact</a></li>
+                <li id="user-status">
+                    <button class="login-btn" onclick="openLoginModal()" data-en="Login / Sign Up" data-ta="உள்நுழை">Login / Sign Up</button>
+                </li>
+            </ul>
+            <button class="mobile-menu-btn" onclick="toggleMobileMenu()">
+                <i class="fas fa-bars"></i>
+            </button>
+        </nav>
+    </header>
+
+    <section class="hero" id="home">
+        <div class="falling-leaves"></div>
+        
+        <div class="hero-content">
+            <h1 data-en="Transform Your Farm with Smart Technology" data-ta="புத்திசாலித்தனமான தொழில்நுட்பத்துடன் உங்கள் பண்ணையை மாற்றுங்கள்" data-aos="fade-up" data-aos-delay="100">Transform Your Farm with Smart Technology</h1>
+            <p data-en="Sustainable, AI-Powered Agricultural Solutions for Modern Farmers in Tamil Nadu" data-ta="தமிழ்நாட்டில் நவீன விவசாயிகளுக்கான நிலையான, AI-இயங்கும் வேளாண்மை தீர்வுகள்" data-aos="fade-up" data-aos-delay="300">Sustainable, AI-Powered Agricultural Solutions for Modern Farmers in Tamil Nadu</p>
+            <div class="cta-buttons" data-aos="fade-up" data-aos-delay="500">
+                <button class="btn btn-primary" onclick="openConsultationModal()">
+                    <span class="btn-text" data-en="Book Free Consultation" data-ta="இலவச ஆலோசனை பெறுங்கள்">Book Free Consultation</span>
+                    <span class="btn-spinner"></span>
+                </button>
+                <a href="#services" class="btn btn-secondary" data-en="Explore Services" data-ta="சேவைகளை ஆராயுங்கள்">Explore Services</a>
+            </div>
+        </div>
+    </section>
+
+    <section class="services" id="services">
+        <h2 class="section-title" data-aos="fade-down" data-en="Our Services" data-ta="எங்கள் சேவைகள்">Our Services</h2>
+        <div class="services-grid">
+            <div class="service-card" data-aos="fade-up" data-aos-delay="100">
+                <div class="service-card-content">
+                    <div class="service-icon"><i class="fas fa-user-tie"></i></div>
+                    <h3 data-en="Agri Consulting" data-ta="வேளாண் ஆலோசனை">Agri Consulting</h3>
+                    <p data-en="Expert guidance to maximize productivity and profitability through sustainable farming practices." data-ta="நிலையான விவசாய முறைகள் மூலம் உற்பத்தித்திறன் மற்றும் இலாபத்தை அதிகரிக்க நிபுணர் வழிகாட்டுதல்.">Expert guidance to maximize productivity and profitability through sustainable farming practices.</p>
+                </div>
+                <button class="btn-book" onclick="openBookingModal('Agri Consulting', 'வேளாண் ஆலோசனை')" data-en="Book Now" data-ta="இப்போது பதிவு செய்">Book Now</button>
+            </div>
+            <div class="service-card" data-aos="fade-up" data-aos-delay="200">
+                <div class="service-card-content">
+                    <div class="service-icon"><i class="fas fa-vial"></i></div>
+                    <h3 data-en="Soil Testing" data-ta="மண் சோதனை">Soil Testing</h3>
+                    <p data-en="Comprehensive soil analysis to determine optimal crop selection and fertilizer requirements." data-ta="உகந்த பயிர் தேர்வு மற்றும் உர தேவைகளை தீர்மானிக்க விரிவான மண் பகுப்பாய்வு.">Comprehensive soil analysis to determine optimal crop selection and fertilizer requirements.</p>
+                </div>
+                <button class="btn-book" onclick="openBookingModal('Soil Testing', 'மண் சோதனை')" data-en="Book Now" data-ta="இப்போது பதிவு செய்">Book Now</button>
+            </div>
+            <div class="service-card" data-aos="fade-up" data-aos-delay="300">
+                <div class="service-card-content">
+                    <div class="service-icon"><i class="fas fa-seedling"></i></div>
+                    <h3 data-en="Crop Planning" data-ta="பயிர் திட்டமிடல்">Crop Planning</h3>
+                    <p data-en="Strategic crop rotation and planning based on market trends and seasonal patterns." data-ta="சந்தை போக்குகள் மற்றும் பருவகால முறைகளின் அடிப்படையில் மூலோபாய பயிர் சுழற்சி மற்றும் திட்டமிடல்.">Strategic crop rotation and planning based on market trends and seasonal patterns.</p>
+                </div>
+                <button class="btn-book" onclick="openBookingModal('Crop Planning', 'பயிர் திட்டமிடல்')" data-en="Book Now" data-ta="இப்போது பதிவு செய்">Book Now</button>
+            </div>
+            <div class="service-card" data-aos="fade-up" data-aos-delay="100">
+                <div class="service-card-content">
+                    <div class="service-icon"><i class="fas fa-cow"></i></div>
+                    <h3 data-en="Livestock Integration" data-ta="கால்நடை ஒருங்கிணைப்பு">Livestock Integration</h3>
+                    <p data-en="Integrate livestock farming with crops for sustainable and profitable farming systems." data-ta="நிலையான மற்றும் இலாபகரமான விவசாய அமைப்புகளுக்கு பயிர்களுடன் கால்நடை வளர்ப்பை ஒருங்கிணைக்கவும்.">Integrate livestock farming with crops for sustainable and profitable farming systems.</p>
+                </div>
+                <button class="btn-book" onclick="openBookingModal('Livestock Integration', 'கால்நடை ஒருங்கிணைப்பு')" data-en="Book Now" data-ta="இப்போது பதிவு செய்">Book Now</button>
+            </div>
+            <div class="service-card" data-aos="fade-up" data-aos-delay="200">
+                <div class="service-card-content">
+                    <div class="service-icon"><i class="fas fa-robot"></i></div>
+                    <h3 data-en="AI & IoT Farming" data-ta="AI & IoT விவசாயம்">AI & IoT Farming</h3>
+                    <p data-en="Smart farming solutions using artificial intelligence and Internet of Things technology." data-ta="செயற்கை நுண்ணறிவு மற்றும் இணைய தொழில்நுட்பத்தைப் பயன்படுத்தி புத்திசாலித்தனமான விவசாய தீர்வுகள்.">Smart farming solutions using artificial intelligence and Internet of Things technology.</p>
+                </div>
+                <button class="btn-book" onclick="openBookingModal('AI & IoT Farming', 'AI & IoT விவசாயம்')" data-en="Book Now" data-ta="இப்போது பதிவு செய்">Book Now</button>
+            </div>
+            <div class="service-card" data-aos="fade-up" data-aos-delay="300">
+                <div class="service-card-content">
+                    <div class="service-icon"><i class="fas fa-chart-line"></i></div>
+                    <h3 data-en="Farm Management" data-ta="பண்ணை நிர்வாகம்">Farm Management</h3>
+                    <p data-en="Complete farm management services from planning to harvest and market linkage." data-ta="திட்டமிடல் முதல் அறுவடை மற்றும் சந்தை இணைப்பு வரை முழுமையான பண்ணை மேலாண்மை சேவைகள்.">Complete farm management services from planning to harvest and market linkage.</p>
+                </div>
+                <button class="btn-book" onclick="openBookingModal('Farm Management', 'பண்ணை நிர்வாகம்')" data-en="Book Now" data-ta="இப்போது பதிவு செய்">Book Now</button>
+            </div>
+        </div>
+    </section>
+
+    <section class="why-choose" id="about">
+        <h2 class="section-title" data-aos="fade-down" data-en="Why Choose Velgo?" data-ta="ஏன் வெல்கோவை தேர்வு செய்ய வேண்டும்?">Why Choose Velgo?</h2>
+        <div class="features-grid">
+            <div class="feature-item" data-aos="fade-right" data-aos-delay="100">
+                <div class="feature-icon"><i class="fas fa-award"></i></div>
+                <div class="feature-content">
+                    <h4 data-en="10+ Years Experience" data-ta="10+ வருட அனுபவம்">10+ Years Experience</h4>
+                    <p data-en="Average 40% increase in farm productivity" data-ta="பண்ணை உற்பத்தித்திறனில் சராசரியாக 40% அதிகரிப்பு">Average 40% increase in farm productivity</p>
+                </div>
+            </div>
+            <div class="feature-item" data-aos="fade-right" data-aos-delay="200">
+                <div class="feature-icon"><i class="fas fa-leaf"></i></div>
+                <div class="feature-content">
+                    <h4 data-en="100% Organic Methods" data-ta="100% இயற்கை முறைகள்">100% Organic Methods</h4>
+                    <p data-en="Focus on sustainable and eco-friendly farming" data-ta="நிலையான மற்றும் சுற்றுச்சூழல் நட்பு விவசாயத்தில் கவனம்">Focus on sustainable and eco-friendly farming</p>
+                </div>
+            </div>
+            <div class="feature-item" data-aos="fade-left" data-aos-delay="300">
+                <div class="feature-icon"><i class="fas fa-headset"></i></div>
+                <div class="feature-content">
+                    <h4 data-en="24/7 Support" data-ta="24/7 ஆதரவு">24/7 Support</h4>
+                    <p data-en="Round-the-clock assistance for all your needs" data-ta="உங்கள் அனைத்து தேவைகளுக்கும் 24 மணி நேர உதவி">Round-the-clock assistance for all your needs</p>
+                </div>
+            </div>
+            <div class="feature-item" data-aos="fade-left" data-aos-delay="400">
+                <div class="feature-icon"><i class="fas fa-chart-bar"></i></div>
+                <div class="feature-content">
+                    <h4 data-en="Proven Results" data-ta="நிரூபிக்கப்பட்ட முடிவுகள்">Proven Results</h4>
+                    <p data-en="Proven track record in agricultural consulting" data-ta="வேளாண்மை ஆலோசனையில் நிரூபிக்கப்பட்ட சாதனை">Proven track record in agricultural consulting</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="testimonials" id="projects">
+        <h2 class="section-title" data-aos="fade-down" data-en="What Our Clients Say" data-ta="எங்கள் வாடிக்கையாளர்கள் என்ன சொல்கிறார்கள்">What Our Clients Say</h2>
+        <div class="testimonial-slider">
+            <div class="testimonial-card" data-aos="zoom-in">
+                <p class="testimonial-text" data-en="Velgo transformed my 5-acre farm completely. With their soil testing and AI recommendations, my crop yield increased by 50% in just one season. Highly recommended!" data-ta="வெல்கோ எனது 5 ஏக்கர் பண்ணையை முழுமையாக மாற்றியது. அவர்களின் மண் சோதனை மற்றும் AI பரிந்துரைகளுடன், ஒரே பருவத்தில் எனது பயிர் விளைச்சல் 50% அதிகரித்தது. மிகவும் பரிந்துரைக்கப்படுகிறது!">"Velgo transformed my 5-acre farm completely. With their soil testing and AI recommendations, my crop yield increased by 50% in just one season. Highly recommended!"</p>
+                <p class="testimonial-author" data-en="Rajesh Kumar" data-ta="ராஜேஷ் குமார்">Rajesh Kumar</p>
+                <p class="testimonial-role" data-en="Farmer, Coimbatore" data-ta="விவசாயி, கோயம்புத்தூர்">Farmer, Coimbatore</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="cta-section" data-aos="zoom-in-up">
+        <h2 data-en="Ready to Transform Your Farm?" data-ta="உங்கள் பண்ணையை மாற்ற தயாரா?">Ready to Transform Your Farm?</h2>
+        <p data-en="Get a free consultation and discover how we can help you achieve sustainable farming success" data-ta="இலவச ஆலோசனை பெறுங்கள் மற்றும் நிலையான விவசாய வெற்றியை அடைய நாங்கள் எவ்வாறு உதவ முடியும் என்பதைக் கண்டறியுங்கள்">Get a free consultation and discover how we can help you achieve sustainable farming success</p>
+        <button class="btn btn-secondary" onclick="openConsultationModal()" data-en="Schedule Consultation" data-ta="ஆலோசனையை திட்டமிடுங்கள்">Schedule Consultation</button>
+    </section>
+
+    <footer class="footer" id="contact">
+        <div class="footer-content">
+            <div class="footer-section" data-aos="fade-up" data-aos-delay="100">
+                <h3 data-en="Velgo Agrisolutions" data-ta="வெல்கோ வேளாண்மை">Velgo Agrisolutions</h3>
+                <p data-en="Leading the agricultural revolution in Tamil Nadu with sustainable, technology-driven farming solutions." data-ta="நிலையான, தொழில்நுட்ப சார்ந்த விவசாய தீர்வுகளுடன் தமிழ்நாட்டில் வேளாண்மை புரட்சிக்கு தலைமை தாங்குதல்.">Leading the agricultural revolution in Tamil Nadu with sustainable, technology-driven farming solutions.</p>
+                <div class="social-icons">
+                    <a href="#"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                </div>
+            </div>
+            <div class="footer-section" data-aos="fade-up" data-aos-delay="200">
+                <h3 data-en="Quick Links" data-ta="விரைவு இணைப்புகள்">Quick Links</h3>
+                <ul>
+                    <li><a href="#home" data-en="Home" data-ta="முகப்பு">Home</a></li>
+                    <li><a href="#services" data-en="Services" data-ta="சேவைகள்">Services</a></li>
+                    <li><a href="#about" data-en="About Us" data-ta="எங்களை பற்றி">About Us</a></li>
+                    <li><a href="#projects" data-en="Projects" data-ta="திட்டங்கள்">Projects</a></li>
+                    <li><a href="#contact" data-en="Contact" data-ta="தொடர்பு">Contact</a></li>
+                </ul>
+            </div>
+            <div class="footer-section" data-aos="fade-up" data-aos-delay="300">
+                <h3 data-en="Services" data-ta="சேவைகள்">Services</h3>
+                <ul>
+                    <li><a href="#" data-en="Agri Consulting" data-ta="வேளாண் ஆலோசனை">Agri Consulting</a></li>
+                    <li><a href="#" data-en="Soil Testing" data-ta="மண் சோதனை">Soil Testing</a></li>
+                    <li><a href="#" data-en="Crop Planning" data-ta="பயிர் திட்டமிடல்">Crop Planning</a></li>
+                    <li><a href="#" data-en="AI & IoT Farming" data-ta="AI & IoT விவசாயம்">AI & IoT Farming</a></li>
+                </ul>
+            </div>
+            <div class="footer-section" data-aos="fade-up" data-aos-delay="400">
+                <h3 data-en="Contact Info" data-ta="தொடர்பு தகவல்">Contact Info</h3>
+                <ul>
+                    <li><i class="fas fa-map-marker-alt"></i> <span data-en="Tamil Nadu, India" data-ta="தமிழ்நாடு, இந்தியா">Tamil Nadu, India</span></li>
+                    <li><i class="fas fa-phone"></i> +91 98765 43210</li>
+                    <li><i class="fas fa-envelope"></i> info@velgo.in</li>
+                    <li><i class="fas fa-clock"></i> <span data-en="Mon - Sat: 9AM - 6PM" data-ta="திங்கள் - சனி: காலை 9 - மாலை 6">Mon - Sat: 9AM - 6PM</span></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p id="copyright-text">&copy; 2024 Velgo Agrisolutions Pvt. Ltd. <span data-en="All rights reserved." data-ta="அனைத்து உரிமைகளும் பாதுகாக்கப்பட்டவை.">All rights reserved.</span></p>
+        </div>
+    </footer>
+
+    <div id="consultationModal" class="modal">
+        <div class="modal-content">
+            <span class="close-modal" onclick="closeConsultationModal()">&times;</span>
+            <h2 data-en="Book Your Consultation" data-ta="உங்கள் ஆலோசனையை பதிவு செய்யுங்கள்">Book Your Consultation</h2>
+            <div id="consultationOptions" class="consultation-options">
+                <div class="option-btn" onclick="selectConsultationType('visit-us')">
+                    <i class="fas fa-building"></i>
+                    <div>
+                        <strong data-en="Visit Our Office" data-ta="எங்கள் அலுவலகத்திற்கு வருகை தாருங்கள்">Visit Our Office</strong>
+                        <p data-en="Come to our place for detailed consultation" data-ta="விரிவான ஆலோசனைக்கு எங்கள் இடத்திற்கு வாருங்கள்">Come to our place for detailed consultation</p>
+                    </div>
+                </div>
+                <div class="option-btn" onclick="selectConsultationType('field-visit')">
+                    <i class="fas fa-tractor"></i>
+                    <div>
+                        <strong data-en="On-Site Visit" data-ta="இடத்தில் பார்வை">On-Site Visit</strong>
+                        <p data-en="We'll visit your farm for assessment" data-ta="மதிப்பீட்டிற்காக நாங்கள் உங்கள் பண்ணைக்கு வருவோம்">We'll visit your farm for assessment</p>
+                    </div>
+                </div>
+            </div>
+            <form id="consultationForm" class="contact-form">
+                <input type="hidden" id="consultationType" name="consultationType">
+                <div class="form-group"><label data-en="Full Name *" data-ta="முழு பெயர் *">Full Name *</label><input type="text" id="name" required></div>
+                <div class="form-group"><label data-en="Phone Number *" data-ta="தொலைபேசி எண் *">Phone Number *</label><input type="tel" id="phone" required></div>
+                <div class="form-group"><label data-en="Email Address *" data-ta="மின்னஞ்சல் முகவரி *">Email Address *</label><input type="email" id="email" required></div>
+                <div class="form-group"><label data-en="Land Size (in acres)" data-ta="நில அளவு (ஏக்கரில்)">Land Size (in acres)</label><input type="number" id="landSize" step="0.1"></div>
+                <div class="form-group"><label data-en="Location" data-ta="இடம்">Location</label><input type="text" id="location"></div>
+                <div class="form-group"><label data-en="Preferred Date" data-ta="விருப்பமான தேதி">Preferred Date</label><input type="date" id="preferredDate"></div>
+                <div class="form-group"><label data-en="Message" data-ta="செய்தி">Message</label><textarea id="message" rows="4"></textarea></div>
+                <button type="submit" class="btn btn-primary">
+                    <span class="btn-text" data-en="Submit Request" data-ta="கோரிக்கையை சமர்ப்பிக்கவும்">Submit Request</span>
+                    <span class="btn-spinner"></span>
+                </button>
+            </form>
+        </div>
+    </div>
+
+    <div id="bookingModal" class="modal">
+        <div class="modal-content">
+            <span class="close-modal" onclick="closeBookingModal()">&times;</span>
+            <h2 data-en="Book a Service" data-ta="ஒரு சேவையை பதிவு செய்யுங்கள்">Book a Service</h2>
+            <form id="bookingForm" class="contact-form">
+                <div class="form-group"><label data-en="Service" data-ta="சேவை">Service</label><input type="text" id="bookingServiceName" disabled></div>
+                <div class="form-group"><label data-en="Full Name *" data-ta="முழு பெயர் *">Full Name *</label><input type="text" id="bookingName" required></div>
+                <div class="form-group"><label data-en="Phone Number *" data-ta="தொலைபேசி எண் *">Phone Number *</label><input type="tel" id="bookingPhone" required></div>
+                <div class="form-group"><label data-en="Email Address" data-ta="மின்னஞ்சல் முகவரி">Email Address</label><input type="email" id="bookingEmail"></div>
+                <div class="form-group"><label data-en="Your Location / City" data-ta="உங்கள் இடம் / நகரம்">Your Location / City</label><input type="text" id="bookingLocation" required></div>
+                <div class="form-group"><label data-en="Message" data-ta="செய்தி">Message</label><textarea id="bookingMessage" rows="3" placeholder-en="E.g., I have 5 acres of land..." placeholder-ta="உதா: என்னிடம் 5 ஏக்கர் நிலம் உள்ளது..."></textarea></div>
+                <button type="submit" class="btn btn-primary">
+                    <span class="btn-text" data-en="Book Now" data-ta="இப்போது பதிவு செய்">Book Now</span>
+                    <span class="btn-spinner"></span>
+                </button>
+            </form>
+        </div>
+    </div>
+
+    <div id="loginModal" class="modal">
+        <div class="modal-content">
+            <span class="close-modal" onclick="closeLoginModal()">&times;</span>
+            <div class="login-tabs">
+                <button class="tab-btn active" onclick="showTab('signInTab', this)">Sign In</button>
+                <button class="tab-btn" onclick="showTab('signUpTab', this)">Sign Up</button>
+            </div>
+            
+            <div id="signInTab" class="tab-content active">
+                <button class="google-btn" id="google-signin-btn">
+                    <i class="fab fa-google"></i> Sign in with Google
+                </button>
+                <div class="divider">or</div>
+                <form id="login-form" class="auth-form">
+                    <div class="form-group">
+                        <label for="login-email">Email</label>
+                        <input type="email" id="login-email" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="login-password">Password</label>
+                        <input type="password" id="login-password" required>
+                    </div>
+                    <div class="auth-error" id="login-error"></div>
+                    <button type="submit" class="btn btn-primary">
+                        <span class="btn-text">Sign In</span>
+                        <span class="btn-spinner"></span>
+                    </button>
+                </form>
+            </div>
+            
+            <div id="signUpTab" class="tab-content">
+                <button class="google-btn" id="google-signup-btn">
+                    <i class="fab fa-google"></i> Sign up with Google
+                </button>
+                <div class="divider">or</div>
+                <form id="signup-form" class="auth-form">
+                    <div class="form-group">
+                        <label for="signup-email">Email</label>
+                        <input type="email" id="signup-email" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="signup-password">Password (6+ characters)</label>
+                        <input type="password" id="signup-password" required>
+                    </div>
+                    <div class="auth-error" id="signup-error"></div>
+                    <button type="submit" class="btn btn-primary">
+                        <span class="btn-text">Create Account</span>
+                        <span class="btn-spinner"></span>
+                    </button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <div id="myBookingsModal" class="modal">
+        <div class="modal-content">
+            <span class="close-modal" onclick="closeMyBookingsModal()">&times;</span>
+            <h2 data-en="My Bookings" data-ta="என் பதிவுகள்">My Bookings</h2>
+            
+            <div class="bookings-tabs">
+                <button class="tab-btn active" onclick="showBookingTab('consultationsTab', this)" data-en="Consultations" data-ta="ஆலோசனைகள்">Consultations</button>
+                <button class="tab-btn" onclick="showBookingTab('servicesTab', this)" data-en="Service Bookings" data-ta="சேவை பதிவுகள்">Service Bookings</button>
+            </div>
+            
+            <div id="consultationsTab" class="tab-content active">
+                <h3 data-en="Active Requests" data-ta="செயலில் உள்ள கோரிக்கைகள்">Active Requests</h3>
+                <div class="bookings-list" id="my-consultations-list-active">
+                    <p class="no-bookings" data-en="You have no active consultation requests." data-ta="உங்களிடம் செயலில் உள்ள ஆலோசனை கோரிக்கைகள் எதுவும் இல்லை.">You have no active consultation requests.</p>
+                </div>
+                
+                <h3 data-en="History" data-ta="வரலாறு">History</h3>
+                <div class="bookings-list" id="my-consultations-list-history">
+                    <p class="no-bookings" data-en="You have no past consultations." data-ta="உங்களிடம் கடந்தகால ஆலோசனைகள் எதுவும் இல்லை.">You have no past consultations.</p>
+                </div>
+            </div>
+            
+            <div id="servicesTab" class="tab-content">
+                <h3 data-en="Active Bookings" data-ta="செயலில் உள்ள பதிவுகள்">Active Bookings</h3>
+                <div class="bookings-list" id="my-bookings-list-active">
+                    <p class="no-bookings" data-en="You have no active service bookings." data-ta="உங்களிடம் செயலில் உள்ள சேவை பதிவுகள் எதுவும் இல்லை.">You have no active service bookings.</p>
+                </div>
+
+                <h3 data-en="History" data-ta="வரலாறு">History</h3>
+                <div class="bookings-list" id="my-bookings-list-history">
+                    <p class="no-bookings" data-en="You have no past service bookings." data-ta="உங்களிடம் கடந்தகால சேவை பதிவுகள் எதுவும் இல்லை.">You have no past service bookings.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <a href="https://wa.me/919876543210" target="_blank" class="whatsapp-float"><i class="fab fa-whatsapp"></i></a>
+    <div class="chatbot-toggle" onclick="toggleChatbot()"><i class="fas fa-comment-dots"></i></div>
+
+    <div class="chatbot-window" id="chatbotWindow">
+        <div class="chatbot-header">
+            <div><strong data-en="Velgo Assistant" data-ta="வெல்கோ உதவியாளர்">Velgo Assistant</strong><p style="font-size: 0.8rem; opacity: 0.9;" data-en="How can we help you?" data-ta="நாங்கள் உங்களுக்கு எவ்வாறு உதவ முடியும்?">How can we help you?</p></div>
+            <span style="cursor: pointer;" onclick="toggleChatbot()">✕</span>
+        </div>
+        <div class="chatbot-messages" id="chatbotMessages">
+            <div class="chat-message bot" data-en="Hello! I'm your Velgo Assistant. How can I help you today?" data-ta="வணக்கம்! நான் உங்கள் வெல்கோ உதவியாளர். இன்று நான் உங்களுக்கு எவ்வாறு உதவ முடியும்?">Hello! I'm your Velgo Assistant. How can I help you today?</div>
+        </div>
+        <div class="chatbot-input-area">
+            <input type="text" class="chatbot-input" id="chatbotInput" placeholder="Type your message...">
+            <button class="chatbot-send" onclick="sendChatMessage()"><i class="fas fa-paper-plane"></i></button>
+        </div>
+    </div>
+
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    
+    <script type="module">
+        // Import Auth functions
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
+        import { 
+            getAuth, 
+            onAuthStateChanged,
+            signInWithEmailAndPassword,
+            createUserWithEmailAndPassword,
+            signInWithPopup,
+            GoogleAuthProvider,
+            signOut
+        } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js";
+        
+        // Import Firestore functions
+        import { 
+            getFirestore, 
+            doc, 
+            setDoc, 
+            getDoc,
+            serverTimestamp,
+            collection, 
+            query, 
+            where, 
+            orderBy, 
+            onSnapshot 
+        } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
+
+
+        // TODO: உங்கள் சொந்த Firebase Configuration-ஐ இங்கு உள்ளிடவும்
+        const firebaseConfig = {
+            apiKey: "AIzaSyAGuHuCPpS_8WfYpJb0nxvVMSM5xSTzyhI",
+            authDomain: "velgo-ai-agri-solutions.firebaseapp.com",
+            projectId: "velgo-ai-agri-solutions",
+            storageBucket: "velgo-ai-agri-solutions.firebasestorage.app",
+            messagingSenderId: "672713775945",
+            appId: "1:672713775945:web:8a380e0a117724430b5898",
+            measurementId: "G-W4DDVLVJD5"
+        };
+
+        // Initialize Firebase
+       // Initialize Firebase
+        const app = initializeApp(firebaseConfig);
+        const auth = getAuth(app);
+        const db = getFirestore(app);
+        const provider = new GoogleAuthProvider();
+        
+        // NEW: Expose auth and signOut to the global scope for inline onclick handlers
+        window.signOut = signOut;
+        window.auth = auth;
+        
+        
+        // ===================================================================
+        // ALL APP LOGIC IS NOW INSIDE THIS MODULE
+        // ===================================================================
+
+        // --- Global App State ---
+        let currentLang = 'en'; // MODIFIED: Default is now English
+        let currentUser = null; // Holds the logged-in user object
+        let currentUserRole = null; // Holds the user's role
+        let consultListener = null; // Real-time listener
+        let bookingsListener = null; // Real-time listener
+        // NEW: Chatbot memory
+        let chatHistory = []; 
+
+        // --- Modal Element Refs ---
+        let consultationModal, bookingModal, loginModal, myBookingsModal, bookingServiceNameInput;
+
+
+        // --- Language Toggle ---
+        window.toggleLanguage = function() {
+            currentLang = currentLang === 'en' ? 'ta' : 'en';
+            const elements = document.querySelectorAll('[data-en][data-ta]');
+            elements.forEach(el => {
+                // MODIFIED: Use .btn-text if it's a button with a spinner
+                const textEl = el.querySelector('.btn-text') || el;
+                const text = el.getAttribute('data-' + currentLang);
+                if (text) { textEl.textContent = text; }
+            });
+            const placeholders = document.querySelectorAll('[placeholder-en][placeholder-ta]');
+            placeholders.forEach(el => {
+                const placeholderText = el.getAttribute('placeholder-' + currentLang);
+                if (placeholderText) { el.placeholder = placeholderText; }
+            });
+        }
+
+        // --- Mobile Menu Toggle ---
+        window.toggleMobileMenu = function() {
+            document.getElementById('navMenu').classList.toggle('active');
+        }
+
+        // --- Sticky Header ---
+        window.addEventListener('scroll', () => {
+            const header = document.getElementById('header');
+            if (window.scrollY > 50) { header.classList.add('scrolled'); }
+            else { header.classList.remove('scrolled'); }
+        });
+
+        // --- Smooth Scrolling ---
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    const headerOffset = 80;
+                    const elementPosition = target.getBoundingClientRect().top;
+                    const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+                    window.scrollTo({ top: offsetPosition, behavior: "smooth" });
+                    document.getElementById('navMenu').classList.remove('active');
+                }
+            });
+        });
+
+        
+        // --- Auth Modal Functions ---
+        window.openLoginModal = function() { loginModal.style.display = 'block'; }
+        window.closeLoginModal = function() { loginModal.style.display = 'none'; }
+        
+        window.showTab = function(tabId, button) {
+            const modal = button.closest('.modal-content');
+            modal.querySelectorAll('.tab-content').forEach(t => t.classList.remove('active'));
+            modal.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+            modal.querySelector('#' + tabId).classList.add('active');
+            button.classList.add('active');
+        }
+        
+        function showAuthError(formId, message) {
+            const errorEl = document.getElementById(formId);
+            errorEl.textContent = message;
+            errorEl.style.display = 'block';
+        }
+        function clearAuthErrors() {
+            document.querySelectorAll('.auth-error').forEach(el => {
+                el.textContent = '';
+                el.style.display = 'none';
+            });
+        }
+        
+        // --- Consultation Modal ---
+        window.openConsultationModal = function() {
+            if (!currentUser) { openLoginModal(); return; }
+            consultationModal.style.display = 'block';
+            document.getElementById('consultationOptions').style.display = 'flex';
+            document.getElementById('consultationForm').style.display = 'none';
+        }
+        window.closeConsultationModal = function() { consultationModal.style.display = 'none'; }
+        window.selectConsultationType = function(type) {
+            document.getElementById('consultationType').value = type;
+            document.getElementById('consultationOptions').style.display = 'none';
+            document.getElementById('consultationForm').style.display = 'block';
+        }
+        
+        // --- Booking Modal ---
+        window.openBookingModal = function(serviceNameEn, serviceNameTa) {
+            if (!currentUser) { openLoginModal(); return; }
+            const serviceName = (currentLang === 'en') ? serviceNameEn : serviceNameTa;
+            bookingServiceNameInput.value = serviceName;
+            bookingModal.style.display = 'block';
+        }
+        window.closeBookingModal = function() { bookingModal.style.display = 'none'; }
+
+        // --- "My Bookings" Modal Functions ---
+        window.openMyBookingsModal = function() {
+            if (!currentUser) { openLoginModal(); return; }
+            myBookingsModal.style.display = 'block';
+        }
+        window.closeMyBookingsModal = function() {
+            myBookingsModal.style.display = 'none';
+        }
+        
+        window.showBookingTab = function(tabId, button) {
+            // This is the function for the 'Consultations' vs 'Services' tabs
+            window.showTab(tabId, button);
+        }
+
+        // Close modals when clicking outside
+        window.onclick = function(event) {
+            if (event.target == consultationModal) { closeConsultationModal(); }
+            if (event.target == bookingModal) { closeBookingModal(); }
+            if (event.target == loginModal) { closeLoginModal(); }
+            if (event.target == myBookingsModal) { closeMyBookingsModal(); } 
+        }
+
+        
+        // --- Admin Panel Navigation ---
+        async function authenticateAndRedirectAdmin() {
+            if (!currentUser) return;
+            document.body.innerHTML = `<div style="display: grid; place-items: center; min-height: 100vh; font-family: 'Segoe UI', sans-serif; background: #F7FCF7; color: #2E562F;">
+                                            <h2>Welcome Admin, ${currentUser.email}</h2>
+                                            <p style="font-size: 1.2rem;">Redirecting to Admin Panel...</p>
+                                        </div>`;
+            try {
+                const token = await currentUser.getIdToken();
+                const response = await fetch('/admin-auth', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ token: token })
+                });
+                const result = await response.json();
+                if (result.status === 'success') {
+                    window.location.href = '/admin';
+                } else {
+                    alert("Admin authentication failed: " + result.message);
+                    window.location.href = '/';
+                }
+            } catch (error) {
+                console.error("Error during admin-auth fetch:", error);
+                alert("An error occurred. Redirecting to home.");
+                window.location.href = '/';
+            }
+        }
+
+
+        // --- REAL-TIME LISTENER FUNCTIONS ---
+
+        function attachBookingListeners(uid) {
+            // Detach old listeners first
+            detachBookingListeners();
+            
+            // 1. Listener for Consultations
+            const consultQuery = query(
+                collection(db, 'consultations'),
+                where('user_uid', '==', uid),
+                orderBy('timestamp', 'desc')
+            );
+            
+            consultListener = onSnapshot(consultQuery, (snapshot) => {
+                const consultList = [];
+                snapshot.forEach(doc => {
+                    consultList.push({ id: doc.id, ...doc.data() });
+                });
+                // MODIFIED: Pass to new rendering function
+                renderBookings(consultList, 'consultations');
+            }, (error) => {
+                console.error("Error listening to consultations: ", error);
+            });
+
+            // 2. Listener for Service Bookings
+            const bookingsQuery = query(
+                collection(db, 'bookings'),
+                where('user_uid', '==', uid),
+                orderBy('timestamp', 'desc')
+            );
+            
+            bookingsListener = onSnapshot(bookingsQuery, (snapshot) => {
+                const bookingsList = [];
+                snapshot.forEach(doc => {
+                    bookingsList.push({ id: doc.id, ...doc.data() });
+                });
+                // MODIFIED: Pass to new rendering function
+                renderBookings(bookingsList, 'bookings');
+            }, (error) => {
+                console.error("Error listening to bookings: ", error);
+            });
+        }
+
+        function detachBookingListeners() {
+            if (consultListener) {
+                consultListener(); // This detaches the listener
+                consultListener = null;
+            }
+            if (bookingsListener) {
+                bookingsListener(); // This detaches the listener
+                bookingsListener = null;
+            }
+            // Clear the lists
+            renderBookings([], 'consultations');
+            renderBookings([], 'bookings');
+        }
+
+        // MODIFIED: This function now builds the status tracker
+        function renderBookings(bookings, type) {
+            
+            // 1. Get containers
+            const activeContainer = document.getElementById(`my-${type}-list-active`);
+            const historyContainer = document.getElementById(`my-${type}-list-history`);
+            if (!activeContainer || !historyContainer) return;
+
+            // 2. Filter lists
+            const activeList = bookings.filter(b => b.status === 'pending' || b.status === 'accepted');
+            const historyList = bookings.filter(b => b.status === 'completed' || b.status === 'rejected');
+
+            // 3. Render Active List
+            buildBookingCards(activeContainer, activeList, type, 'active');
+            
+            // 4. Render History List
+            buildBookingCards(historyContainer, historyList, type, 'history');
+            
+            // 5. Re-run language toggle to apply to new dynamic content
+            if (currentLang === 'ta') {
+                currentLang = 'en'; // Force it back to 'en' so toggle sets it to 'ta'
+                toggleLanguage();
+            }
+
+            // 6. Re-initialize AOS for new elements
+            AOS.init({ once: true, offset: 20 });
+        }
+
+        // NEW: Helper function to build the cards
+        function buildBookingCards(container, list, type, listCategory) {
+            container.innerHTML = ''; // Clear list
+            
+            if (list.length === 0) {
+                let noDataEn, noDataTa;
+                if (type === 'consultations') {
+                    noDataEn = (listCategory === 'active') ? "You have no active consultation requests." : "You have no past consultations.";
+                    noDataTa = (listCategory === 'active') ? "உங்களிடம் செயலில் உள்ள ஆலோசனை கோரிக்கைகள் எதுவும் இல்லை." : "உங்களிடம் கடந்தகால ஆலோசனைகள் எதுவும் இல்லை.";
+                } else {
+                    noDataEn = (listCategory === 'active') ? "You have no active service bookings." : "You have no past service bookings.";
+                    noDataTa = (listCategory === 'active') ? "உங்களிடம் செயலில் உள்ள சேவை பதிவுகள் எதுவும் இல்லை." : "உங்களிடம் கடந்தகால சேவை பதிவுகள் எதுவும் இல்லை.";
+                }
+                container.innerHTML = `<p class="no-bookings" data-en="${noDataEn}" data-ta="${noDataTa}">${currentLang === 'en' ? noDataEn : noDataTa}</p>`;
+                return;
+            }
+
+            list.forEach(booking => {
+                const card = document.createElement('div');
+                card.className = 'booking-card';
+                card.setAttribute('data-aos', 'fade-up');
+                
+                const title = type === 'consultations' ? (booking.type || 'Consultation') : (booking.service || 'Service Booking');
+                const timestamp = booking.timestamp && booking.timestamp.seconds ? (new Date(booking.timestamp.seconds * 1000)).toLocaleString() : 'No date';
+                
+                const status = booking.status || 'pending';
+                const statusText = status.charAt(0).toUpperCase() + status.slice(1);
+                
+                let statusMessageHTML = '';
+                if (status === 'accepted') {
+                    statusMessageHTML = `
+                        <div class="booking-status-message status-msg-accepted" data-en="Accepted! We will contact you soon to confirm the details." data-ta="ஏற்கப்பட்டது! விவரங்களை உறுதிப்படுத்த நாங்கள் விரைவில் உங்களைத் தொடர்புகொள்வோம்.">
+                            Accepted! We will contact you soon to confirm the details.
+                        </div>`;
+                } else if (status === 'completed') {
+                    statusMessageHTML = `
+                        <div class="booking-status-message status-msg-completed" data-en="Service Completed. Thank you for choosing Velgo!" data-ta="சேவை முடிந்தது. வெல்கோவைத் தேர்ந்தெடுத்ததற்கு நன்றி!">
+                            Service Completed. Thank you for choosing Velgo!
+                        </div>`;
+                } else if (status === 'rejected') {
+                    const reason = booking.rejection_reason || "No reason provided.";
+                    statusMessageHTML = `
+                        <div class="booking-status-message status-msg-rejected">
+                            <strong data-en="Rejected. Reason:" data-ta="நிராகரிக்கப்பட்டது. காரணம்:">Rejected. Reason:</strong>
+                            <span>${reason}</span>
+                        </div>`;
+                }
+
+                // NEW: Dynamic Status Tracker Logic
+                let trackerHTML = '';
+                
+                // Define labels
+                let label1 = {en: "Request Sent", ta: "கோரிக்கை அனுப்பப்பட்டது"};
+                let label2 = {en: "Admin Review", ta: "நிர்வாகி ஆய்வு"};
+                let label3 = {en: "Confirmed", ta: "உறுதி செய்யப்பட்டது"};
+
+                if (status === 'pending') {
+                    trackerHTML = `
+                        <div class="tracker-step completed">
+                            <div class="tracker-step-icon"><i class="fas fa-check"></i></div>
+                            <span class="tracker-step-label" data-en="${label1.en}" data-ta="${label1.ta}">${label1.en}</span>
+                        </div>
+                        <div class="tracker-step active">
+                            <div class="tracker-step-icon"><i class="fas fa-hourglass-half"></i></div>
+                            <span class="tracker-step-label" data-en="${label2.en}" data-ta="${label2.ta}">${label2.en}</span>
+                        </div>
+                        <div class="tracker-step">
+                            <div class="tracker-step-icon"><i class="fas fa-tasks"></i></div>
+                            <span class="tracker-step-label" data-en="${label3.en}" data-ta="${label3.ta}">${label3.en}</span>
+                        </div>
+                    `;
+                } else if (status === 'accepted') {
+                    trackerHTML = `
+                        <div class="tracker-step completed">
+                            <div class="tracker-step-icon"><i class="fas fa-check"></i></div>
+                            <span class="tracker-step-label" data-en="${label1.en}" data-ta="${label1.ta}">${label1.en}</span>
+                        </div>
+                        <div class="tracker-step completed">
+                            <div class="tracker-step-icon"><i class="fas fa-check"></i></div>
+                            <span class="tracker-step-label" data-en="${label2.en}" data-ta="${label2.ta}">${label2.en}</span>
+                        </div>
+                        <div class="tracker-step completed">
+                            <div class="tracker-step-icon"><i class="fas fa-tasks"></i></div>
+                            <span class="tracker-step-label" data-en="${label3.en}" data-ta="${label3.ta}">${label3.en}</span>
+                        </div>
+                    `;
+                } else if (status === 'completed') {
+                    // Relabel for 'completed' status
+                    label2 = {en: "Confirmed", ta: "உறுதி செய்யப்பட்டது"};
+                    label3 = {en: "Completed", ta: "முடிந்தது"};
+                    trackerHTML = `
+                        <div class="tracker-step completed">
+                            <div class="tracker-step-icon"><i class="fas fa-check"></i></div>
+                            <span class="tracker-step-label" data-en="${label1.en}" data-ta="${label1.ta}">${label1.en}</span>
+                        </div>
+                        <div class="tracker-step completed">
+                            <div class="tracker-step-icon"><i class="fas fa-tasks"></i></div>
+                            <span class="tracker-step-label" data-en="${label2.en}" data-ta="${label2.ta}">${label2.en}</span>
+                        </div>
+                        <div class="tracker-step completed">
+                            <div class="tracker-step-icon"><i class="fas fa-check-double"></i></div>
+                            <span class="tracker-step-label" data-en="${label3.en}" data-ta="${label3.ta}">${label3.en}</span>
+                        </div>
+                    `;
+                } else if (status === 'rejected') {
+                    label3 = {en: "Rejected", ta: "நிராகரிக்கப்பட்டது"};
+                    trackerHTML = `
+                        <div class="tracker-step completed">
+                            <div class="tracker-step-icon"><i class="fas fa-check"></i></div>
+                            <span class="tracker-step-label" data-en="${label1.en}" data-ta="${label1.ta}">${label1.en}</span>
+                        </div>
+                        <div class="tracker-step completed">
+                            <div class="tracker-step-icon"><i class="fas fa-check"></i></div>
+                            <span class="tracker-step-label" data-en="${label2.en}" data-ta="${label2.ta}">${label2.en}</span>
+                        </div>
+                        <div class="tracker-step rejected">
+                            <div class="tracker-step-icon"><i class="fas fa-times"></i></div>
+                            <span class="tracker-step-label" data-en="${label3.en}" data-ta="${label3.ta}">${label3.en}</span>
+                        </div>
+                    `;
+                }
+
+
+                card.innerHTML = `
+                    <div class="booking-card-header">
+                        <h4>${title}</h4>
+                        <span class="status status-${status}">${statusText}</span>
+                    </div>
+                    <div class="booking-card-body">
+                        <p><strong data-en="Submitted On" data-ta="சமர்ப்பித்தது">Submitted On</strong>: ${timestamp}</p>
+                        <p><strong data-en="Contact Name" data-ta="தொடர்பு பெயர்">Contact Name</strong>: ${booking.name || 'N/A'}</p>
+                        <p><strong data-en="Contact Phone" data-ta="தொலைபேசி எண்">Contact Phone</strong>: ${booking.phone || 'N/A'}</p>
+                        
+                        <div class="status-tracker">
+                            ${trackerHTML}
+                        </div>
+
+                        ${statusMessageHTML}
+                    </div>
+                `;
+                container.appendChild(card);
+            });
+        }
+
+
+        // --- Helper: Send data to Flask Backend ---
+        async function sendDataToBackend(endpoint, data) {
+            if (!currentUser) { throw new Error("User not authenticated."); }
+            const token = await currentUser.getIdToken();
+            const response = await fetch(endpoint, {
+                method: 'POST',
+                headers: { 
+                    'Content-Type': 'application/json',
+                    'Authorization': `Bearer ${token}`
+                },
+                body: JSON.stringify(data)
+            });
+            const result = await response.json();
+            if (response.status !== 200) {
+                 throw new Error(result.message || 'Submission failed');
+            }
+            return result;
+        }
+
+        // --- NEW: Helper for loading state on buttons ---
+        function setButtonLoading(button, isLoading) {
+            if (!button) return;
+            const textEl = button.querySelector('.btn-text');
+            if (isLoading) {
+                button.classList.add('loading');
+                button.disabled = true;
+                if (textEl) textEl.style.opacity = '0'; // Hide text
+            } else {
+                button.classList.remove('loading');
+                button.disabled = false;
+                if (textEl) textEl.style.opacity = '1'; // Show text
+            }
+        }
+
+        // --- Chatbot ---
+        window.toggleChatbot = function() {
+            const chatbot = document.getElementById('chatbotWindow');
+            chatbot.style.display = chatbot.style.display === 'flex' ? 'none' : 'flex';
+        }
+
+        const messagesDiv = document.getElementById('chatbotMessages');
+        
+        // NEW: Function to add a message to the chat UI
+        function addChatMessage(message, type = 'bot') {
+            const msgEl = document.createElement('div');
+            msgEl.className = `chat-message ${type}`;
+            msgEl.textContent = message;
+            messagesDiv.appendChild(msgEl);
+            messagesDiv.scrollTop = messagesDiv.scrollHeight;
+            return msgEl; // Return the element
+        }
+
+        // NEW: Function to show/hide typing indicator
+        function setBotTyping(isTyping) {
+            let typingEl = document.getElementById('bot-typing');
+            if (isTyping && !typingEl) {
+                const msgEl = document.createElement('div');
+                msgEl.id = 'bot-typing';
+                msgEl.className = 'chat-message bot loading';
+                msgEl.innerHTML = `<div class="typing-dots"><span></span><span></span><span></span></div>`;
+                messagesDiv.appendChild(msgEl);
+                messagesDiv.scrollTop = messagesDiv.scrollHeight;
+            } else if (!isTyping && typingEl) {
+                typingEl.remove();
+            }
+        }
+// MODIFIED: Gemini Chatbot Integration
+        async function callGeminiAPI(message, history) {
+            
+            // ------------------------------------------------------------------
+            // TODO: PASTE YOUR **NEW, SECRET** GEMINI API KEY HERE
+            // (Get it from Google AI Studio. DO NOT SHARE THIS KEY ANYWHERE!)
+            // ------------------------------------------------------------------
+            
+            // <--- 1. இங்கே உங்கள் புத்தம் புதிய, ரகசியமான KEY-ஐ பேஸ்ட் செய்யவும்.
+            const API_KEY = "AIzaSyC9GZetkBStW43majn65X9L89Un_LGmcBY"; 
+            
+            // <--- 2. இது சரியான மாடல் URL, இதை மாற்ற வேண்டாம்.
+            const API_URL = `https://generativanguage.googleapis.com/v1beta/models/gemini-1.5-pro-latest:generateContent?key=${API_KEY}`;
+            
+            // 1. Get Page Context (இது சரியாக உள்ளது)
+            const pageContext = document.body.innerText.substring(0, 4000); 
+            const systemInstruction = `
+                You are Velgo Assistant, a helpful chatbot for Velgo Agrisolutions, an agri-consultancy in Tamil Nadu.
+                Your goal is to answer questions based ONLY on the provided context about Velgo's services (Agri Consulting, Soil Testing, Crop Planning, AI & IoT Farming, etc.), benefits (10+ years experience, 100% organic), and contact info.
+                If the answer is not in the context, politely say "I can only answer questions about Velgo Agrisolutions services. For more details, would you like to book a free consultation?" (In Tamil: "என்னால் வெல்கோ அக்ரிசொல்யூஷன்ஸ் சேவைகளைப் பற்றி மட்டுமே பதிலளிக்க முடியும். மேலும் விவரங்களுக்கு, நீங்கள் ஒரு இலவச ஆலோசனையை பதிவு செய்ய விரும்புகிறீர்களா?").
+                Do not answer any general knowledge questions or any topics unrelated to the provided context.
+                Always be polite and helpful.
+                Context: """
+                ${pageContext}
+                """
+            `;
+            
+            // 2. Format history for Gemini API (இது சரியாக உள்ளது)
+            const contents = history.map(item => ({
+                role: item.role,
+                parts: [{ text: item.message }]
+            }));
+            
+            // Add the new user message to the contents
+            contents.push({
+                role: "user",
+                parts: [{ text: message }]
+            });
+
+            // 3. Construct the API request body
+            const requestBody = {
+                contents: contents,
+                // System Instruction-ஐ அனுப்ப இதுவே சரியான வழி
+                systemInstruction: {
+                    parts: [{ text: systemInstruction }]
+                },
+                generationConfig: {
+                    temperature: 0.7,
+                    topP: 1,
+                    maxOutputTokens: 2048,
+                },
+                safetySettings: [
+                    { category: "HARM_CATEGORY_HARASSMENT", threshold: "BLOCK_MEDIUM_AND_ABOVE" },
+                    { category: "HARM_CATEGORY_HATE_SPEECH", threshold: "BLOCK_MEDIUM_AND_ABOVE" },
+                    { category: "HARM_CATEGORY_SEXUALLY_EXPLICIT", threshold: "BLOCK_MEDIUM_AND_ABOVE" },
+                    { category: "HARM_CATEGORY_DANGEROUS_CONTENT", threshold: "BLOCK_MEDIUM_AND_ABOVE" },
+                ]
+            };
+
+            // 4. Make the API Call
+            try {
+                // இதுவே உண்மையான API 'fetch' அழைப்பு
+                const response = await fetch(API_URL, {
+                    method: "POST",
+                    headers: {
+                        "Content-Type": "application/json",
+                    },
+                    body: JSON.stringify(requestBody)
+                });
+
+                if (!response.ok) {
+                    // key தவறாக இருந்தால், 4xx பிழை இங்கே வரும்
+                    const errorBody = await response.json();
+                    console.error("Gemini API Error:", errorBody);
+                    return `Sorry, I faced an error (Code: ${response.status}). Please try again.\n(Error: ${errorBody.error.message})`;
+                }
+
+                const data = await response.json();
+
+                // Extract the text from the response
+                if (data.candidates && data.candidates[0] && data.candidates[0].content) {
+                    const botMessage = data.candidates[0].content.parts[0].text;
+                    return botMessage;
+                } else {
+                    // பதில் வரவில்லை என்றால் (e.g., safety block)
+                    console.warn("No content received from Gemini (possibly blocked):", data);
+                    return "Sorry, I couldn't get a response. (No content received)";
+                }
+                
+            } catch (error) {
+                // ***உங்கள் பிழை இங்கே இருந்து வருகிறது***
+                // (Key disable செய்யப்பட்டதால் நெட்வொர்க் பிழை ஏற்படுகிறது)
+                console.error("Error calling Gemini API:", error);
+                return "Sorry, I am having trouble connecting. Please try again later."; 
+            }
+        }
+        // MODIFIED: sendChatMessage now uses the Gemini structure
+        window.sendChatMessage = async function() {
+            const input = document.getElementById('chatbotInput');
+            const message = input.value.trim();
+            if (!message) return;
+
+            // 1. Add user message to UI
+            addChatMessage(message, 'user');
+            // 2. Add user message to memory
+            chatHistory.push({ role: 'user', message: message });
+            input.value = '';
+
+            // 3. Show typing indicator
+            setBotTyping(true);
+
+            // 4. Call the API
+            const botResponse = await callGeminiAPI(message, chatHistory);
+
+            // 5. Hide typing indicator
+            setBotTyping(false);
+            
+            // 6. Add bot response to UI
+            addChatMessage(botResponse, 'bot');
+            // 7. Add bot response to memory
+            chatHistory.push({ role: 'model', message: botResponse });
+        }
+
+
+        // ===================================================================
+        // MAIN EXECUTION (runs after DOM is loaded)
+        // ===================================================================
+        
+        document.addEventListener('DOMContentLoaded', () => {
+            
+            // --- Assign Modal Refs ---
+            consultationModal = document.getElementById('consultationModal');
+            bookingModal = document.getElementById('bookingModal');
+            loginModal = document.getElementById('loginModal');
+            myBookingsModal = document.getElementById('myBookingsModal');
+            bookingServiceNameInput = document.getElementById('bookingServiceName');
+            
+            // --- Attach Auth State Listener ---
+            onAuthStateChanged(auth, async (user) => {
+                if (user) {
+                    currentUser = user; 
+                    const userDocRef = doc(db, 'users', user.uid);
+                    const userDoc = await getDoc(userDocRef);
+                    
+                    let role = 'client'; 
+                    
+                    if (userDoc.exists()) {
+                        role = userDoc.data().role; 
+                    } else {
+                        // Create user doc if it's missing (e.g., first-time Google sign-in)
+                        console.warn("User doc not found, creating one.");
+                        if (user.providerData.some(p => p.providerId === 'google.com') || user.email) {
+                            try {
+                                await setDoc(userDocRef, {
+                                    email: user.email,
+                                    role: 'client',
+                                    createdAt: serverTimestamp()
+                                });
+                                console.log("Created missing user doc.");
+                            } catch (e) { 
+                                console.error("Error creating missing doc:", e);
+                            }
+                        }
+                    }
+                    
+                    currentUserRole = role; 
+                    
+                    if (role === 'admin') {
+                        // If user is admin, immediately try to authenticate to admin panel
+                        setTimeout(() => { authenticateAndRedirectAdmin(); }, 100);
+                    } else {
+                        // Regular client
+                        updateNavUI(user, role);
+                        attachBookingListeners(user.uid);
+                        closeLoginModal(); // Close login modal on success
+                    }
+                    
+                } else {
+                    // User is logged out
+                    currentUser = null;
+                    currentUserRole = null;
+                    updateNavUI(null, null); 
+                    detachBookingListeners();
+                }
+            });
+
+            // --- Update Nav UI Function ---
+            function updateNavUI(user, role) {
+                const userStatusEl = document.getElementById('user-status');
+                const myBookingsNav = document.getElementById('my-bookings-nav-item');
+                
+                if (user && role === 'client') {
+                    userStatusEl.innerHTML = `
+                        <span style="font-weight: 600; word-break: break-all;">${user.email}</span>
+                        <button class="logout-btn" onclick="signOut(auth)">Logout</button>
+                    `;
+                    myBookingsNav.style.display = 'list-item'; 
+                } else if (!user) { 
+                    userStatusEl.innerHTML = `
+                        <button class="login-btn" onclick="openLoginModal()" data-en="Login / Sign Up" data-ta="உள்நுழை">Login / Sign Up</button>
+                    `;
+                    myBookingsNav.style.display = 'none'; 
+                }
+                
+                // Re-run language toggle for new buttons
+                if (currentLang === 'ta') {
+                    currentLang = 'en'; // Force it back to 'en' so toggle sets it to 'ta'
+                    toggleLanguage();
+                }
+            }
+            
+            // --- Attach Auth Form Listeners ---
+
+            // Google Sign-In (for both sign-in and sign-up)
+            function handleGoogleSignIn() {
+                clearAuthErrors();
+                signInWithPopup(auth, provider)
+                    .then((result) => { 
+                        // onAuthStateChanged will handle the rest
+                    })
+                    .catch((error) => { showAuthError('login-error', error.message); });
+            }
+            document.getElementById('google-signin-btn').addEventListener('click', handleGoogleSignIn);
+            document.getElementById('google-signup-btn').addEventListener('click', handleGoogleSignIn);
+
+            // Email/Pass Sign Up
+            document.getElementById('signup-form').addEventListener('submit', async (e) => {
+                e.preventDefault();
+                clearAuthErrors();
+                const button = e.target.querySelector('button[type="submit"]');
+                setButtonLoading(button, true);
+
+                const email = document.getElementById('signup-email').value;
+                const password = document.getElementById('signup-password').value;
+                
+                try {
+                    const userCredential = await createUserWithEmailAndPassword(auth, email, password);
+                    const user = userCredential.user;
+                    
+                    // Create the user doc in Firestore
+                    const userDocRef = doc(db, 'users', user.uid);
+                    await setDoc(userDocRef, {
+                        email: user.email,
+                        role: 'client', 
+                        createdAt: serverTimestamp()
+                    });
+                    // onAuthStateChanged will handle the rest
+                } catch (error) {
+                    console.error("Sign up error:", error);
+                    showAuthError('signup-error', error.message);
+                } finally {
+                    setButtonLoading(button, false);
+                }
+            });
+
+            // Email/Pass Sign In
+            document.getElementById('login-form').addEventListener('submit', async (e) => {
+                e.preventDefault();
+                clearAuthErrors();
+                const button = e.target.querySelector('button[type="submit"]');
+                setButtonLoading(button, true);
+
+                const email = document.getElementById('login-email').value;
+                const password = document.getElementById('login-password').value;
+                
+                try {
+                    await signInWithEmailAndPassword(auth, email, password);
+                    // onAuthStateChanged will handle the rest
+                } catch (error) {
+                    showAuthError('login-error', error.message);
+                } finally {
+                    setButtonLoading(button, false);
+                }
+            });
+
+            // --- Attach Booking Form Listeners ---
+            
+            // Consultation Form
+            document.getElementById('consultationForm').addEventListener('submit', async function(e) {
+                e.preventDefault();
+                const button = e.target.querySelector('button[type="submit"]');
+                setButtonLoading(button, true);
+
+                const formData = {
+                    type: document.getElementById('consultationType').value,
+                    name: document.getElementById('name').value,
+                    phone: document.getElementById('phone').value,
+                    email: document.getElementById('email').value,
+                    landSize: document.getElementById('landSize').value,
+                    location: document.getElementById('location').value,
+                    preferredDate: document.getElementById('preferredDate').value,
+                    message: document.getElementById('message').value
+                };
+                try {
+                    await sendDataToBackend('/api/consult', formData);
+                    alert(currentLang === 'en' ? 'Thank you! We will contact you shortly.' : 'நன்றி! நாங்கள் விரைவில் உங்களை தொடர்பு கொள்வோம்.');
+                    closeConsultationModal();
+                    this.reset();
+                } catch (error) {
+                    console.error("Error submitting consultation:", error);
+                    alert(currentLang === 'en' ? 'Error: ' + error.message : 'பிழை: ' + error.message);
+                } finally {
+                    setButtonLoading(button, false);
+                }
+            });
+            
+            // Service Booking Form
+            document.getElementById('bookingForm').addEventListener('submit', async function(e) {
+                e.preventDefault();
+                const button = e.target.querySelector('button[type="submit"]');
+                setButtonLoading(button, true);
+
+                const bookingData = {
+                    service: document.getElementById('bookingServiceName').value,
+                    name: document.getElementById('bookingName').value,
+                    phone: document.getElementById('bookingPhone').value,
+                    email: document.getElementById('bookingEmail').value,
+                    location: document.getElementById('bookingLocation').value,
+                    message: document.getElementById('bookingMessage').value
+                };
+                try {
+                    await sendDataToBackend('/api/book', bookingData);
+                    alert(currentLang === 'en' ? 'Booking request sent! We will contact you soon.' : 'பதிவு கோரிக்கை அனுப்பப்பட்டது! நாங்கள் உங்களை விரைவில் தொடர்பு கொள்வோம்.');
+                    closeBookingModal();
+                    this.reset();
+                } catch (error) {
+                    console.error("Error submitting booking: ", error);
+                    alert(currentLang === 'en' ? 'Error: ' + error.message : 'பிழை: ' + error.message);
+                } finally {
+                    setButtonLoading(button, false);
+                }
+            });
+
+            // --- Chatbot Listener ---
+            document.getElementById('chatbotInput').addEventListener('keypress', function(e) {
+                if (e.key === 'Enter') { sendChatMessage(); }
+            });
+
+            // --- Initialize Animations & Particles ---
+            
+            function createFallingLeaves() {
+                const container = document.querySelector('.falling-leaves');
+                if (!container) return;
+                const animations = ['fall', 'fall-windy', 'fall-reverse']; // Animation names from CSS
+                const icons = ['fa-leaf', 'fa-seedling']; // Font Awesome icons
+                
+                for (let i = 0; i < 40; i++) { // Create 40 leaves
+                    const leaf = document.createElement('i');
+                    leaf.className = `fas ${icons[i % 2]} leaf`; // Cycle icons
+                    leaf.style.left = Math.random() * 100 + 'vw';
+                    leaf.style.animationName = animations[i % 3]; // Cycle animations
+                    leaf.style.animationDuration = (Math.random() * 10 + 10) + 's'; // Duration 10-20s
+                    leaf.style.animationDelay = (Math.random() * 10) + 's'; // Delay 0-10s
+                    leaf.style.fontSize = (Math.random() * 0.8 + 0.7) + 'rem'; // Size 0.7-1.5rem
+                    container.appendChild(leaf);
+                }
+            }
+            
+            createFallingLeaves();
+            
+            AOS.init({
+                duration: 800,
+                once: true,
+                offset: 50
+            });
+            
+            // --- NEW: Function to load dynamic footer content ---
+            async function loadFooterData() {
+                const copyrightP = document.getElementById('copyright-text');
+                if (!copyrightP) return; // Exit if element not found
+
+                const currentYear = new Date().getFullYear();
+                const companyName = "Velgo Agrisolutions Pvt. Ltd.";
+                
+                let creditsText = "Code Crafter"; 
+                try {
+                    const docRef = doc(db, "config", "footer"); 
+                    const docSnap = await getDoc(docRef);
+
+                    if (docSnap.exists() && docSnap.data().credits) {
+                        creditsText = docSnap.data().credits; 
+                    } else {
+                        console.warn("Firestore: 'config/footer' doc not found or 'credits' field is missing. Using default.");
+                    }
+                } catch (error) {
+                    console.error("Error fetching footer credits from Firestore:", error);
+                }
+                
+                // MODIFIED: Combine and set the final HTML with <a> tag
+                copyrightP.innerHTML = `&copy; ${currentYear} ${companyName} 
+                                        <span data-en="All rights reserved." data-ta="அனைத்து உரிமைகளும் பாதுகாக்கப்பட்டவை.">All rights reserved.</span>
+                                        <a href="team.html" target="_blank" class="footer-credits-link">
+                                            <span class="footer-credits"> | ${creditsText}</span>
+                                        </a>`;
+                
+                // Re-run toggle to apply language to the "All rights reserved" span
+                if (currentLang === 'ta') {
+                    currentLang = 'en'; 
+                    toggleLanguage();
+                }
+            }
+
+            // Call the new footer function
+            loadFooterData();
+            
+        }); // End of DOMContentLoaded
+        
+    </script>
+</body>
+</html>

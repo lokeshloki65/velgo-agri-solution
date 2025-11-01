@@ -1,0 +1,700 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard - Velgo Agrisolutions</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <style>
+        :root {
+            --primary-green: #43A047;
+            --light-green: #66BB6A;
+            --accent-green: #9CCC65;
+            --bg-light: #f4f7f6;
+            --white: #ffffff;
+            --text-dark: #2E562F;
+            --text-gray: #616161;
+            --error-red: #D32F2F;
+            --pending-orange: #FF9800;
+            --accepted-blue: #2196F3;
+            --completed-green: #43A047;
+            --sidebar-bg: #2E562F;
+            --sidebar-text: #f0f0f0;
+            --sidebar-active: var(--accent-green);
+        }
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        body {
+            background: var(--bg-light);
+            color: var(--text-dark);
+            display: flex;
+            height: 100vh;
+            overflow: hidden;
+        }
+
+        /* --- Sidebar Navigation --- */
+        .sidebar {
+            width: 260px;
+            background: var(--sidebar-bg);
+            color: var(--sidebar-text);
+            display: flex;
+            flex-direction: column;
+            flex-shrink: 0;
+            height: 100vh;
+            overflow-y: auto;
+            transition: transform 0.3s ease;
+            z-index: 1000;
+        }
+        .sidebar-header {
+            padding: 1.5rem;
+            text-align: center;
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: var(--white);
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+        }
+        .sidebar-header i {
+            color: var(--accent-green);
+        }
+        .sidebar-nav {
+            list-style: none;
+            flex-grow: 1;
+        }
+        .sidebar-nav-item {
+            display: block;
+        }
+        .sidebar-nav-link {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            padding: 1rem 1.5rem;
+            text-decoration: none;
+            color: var(--sidebar-text);
+            transition: all 0.2s ease;
+        }
+        .sidebar-nav-link:hover {
+            background: rgba(255,255,255,0.1);
+        }
+        .sidebar-nav-link.active {
+            background: var(--sidebar-active);
+            color: var(--white);
+            font-weight: 600;
+        }
+        .nav-divider {
+            padding: 0.5rem 1.5rem;
+            font-size: 0.8rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            color: var(--light-green);
+            margin-top: 1rem;
+        }
+        .sidebar-nav-link i {
+            width: 20px;
+            text-align: center;
+        }
+
+        /* --- Main Content Area --- */
+        .main-wrapper {
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+            height: 100vh;
+            transition: margin-left 0.3s ease;
+        }
+
+        /* --- Top Header Bar --- */
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 2rem;
+            background: var(--white);
+            border-bottom: 1px solid #e0e0e0;
+            flex-shrink: 0;
+        }
+        
+        .mobile-menu-toggle {
+            display: none;
+            font-size: 1.5rem;
+            background: none;
+            border: none;
+            color: var(--primary-green);
+            cursor: pointer;
+            margin-right: 1rem;
+        }
+        .header-title-container {
+            display: flex;
+            align-items: center;
+        }
+        .header-title {
+            font-size: 1.75rem;
+            font-weight: 600;
+            color: var(--primary-green);
+        }
+        .admin-info {
+            display: flex;
+            align-items: center;
+            gap: 1.5rem;
+            flex-shrink: 0; /* <-- UPDATE: Ithu "Welcome" text cut aaguratha thadukkum */
+        }
+        .admin-email {
+            font-size: 0.95rem;
+            color: var(--text-gray);
+            font-weight: 500;
+            white-space: nowrap; /* <-- NEW: Welcome text wrap aagama irukka */
+        }
+        
+        .btn-logout {
+            padding: 0.6rem 1.2rem;
+            border: none;
+            border-radius: 50px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+            background: var(--error-red);
+            color: var(--white);
+            text-decoration: none;
+        }
+        .btn-logout:hover {
+            background: #b71c1c;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        }
+        
+        /* --- Page Content (Table Area) --- */
+        .content {
+            flex-grow: 1;
+            padding: 2rem;
+            overflow-y: auto;
+        }
+        .table-toolbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1.5rem;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+        #searchInput {
+            padding: 0.75rem 1rem;
+            border: 2px solid #ddd;
+            border-radius: 8px;
+            font-size: 1rem;
+            width: 300px;
+            max-width: 100%;
+        }
+        .table-container {
+            background: var(--white);
+            border-radius: 15px;
+            width: 1500px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.05);
+            overflow-x: auto;
+            transition: box-shadow 0.3s ease, transform 0.3s ease;
+        }
+        .table-container:hover {
+            box-shadow: 0 10px 30px rgba(0,0,0,0.07);
+            transform: translateY(-2px);
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        th, td {
+            padding: 1rem 1.5rem;
+            text-align: left;
+            border-bottom: 1px solid #e5e7eb;
+            white-space: nowrap;
+        }
+        th {
+            background: var(--bg-light);
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            color: var(--text-dark);
+        }
+        
+        /* Fix for wrapping text */
+        th.wrap-text {
+             white-space: normal;
+        }
+        td.wrap-text {
+            white-space: normal;
+            /* --- UPDATE: Ithu email/location-ah correct-ah wrap pannum --- */
+            word-break: break-word; 
+            overflow-wrap: break-word;
+            /* ----------------------------------------------------------- */
+            min-width: 180px;
+        }
+        
+        tr {
+            transition: background-color 0.2s ease-out;
+        }
+        tr:last-child td { border-bottom: none; }
+        tr:hover { background-color: #f5f5f5; }
+        
+        /* --- Status & Action Buttons --- */
+        .status {
+            padding: 0.3rem 0.75rem;
+            border-radius: 20px;
+            font-weight: 600;
+            font-size: 0.85rem;
+            color: var(--white);
+        }
+        .status-pending { background: var(--pending-orange); }
+        .status-accepted { background: var(--accepted-blue); }
+        .status-rejected { background: var(--error-red); }
+        .status-completed { background: var(--completed-green); }
+
+        .btn-action {
+            padding: 0.5rem 1rem;
+            border: none;
+            border-radius: 8px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s;
+            margin-right: 5px; 
+            font-size: 0.9rem;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        .btn-accept {
+            background: var(--primary-green);
+            color: var(--white);
+        }
+        .btn-accept:hover:not(:disabled) { 
+            background: var(--light-green); 
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        }
+        
+        .btn-reject {
+            background: var(--error-red);
+            color: var(--white);
+        }
+        .btn-reject:hover:not(:disabled) { 
+            background: #b71c1c; 
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        }
+
+        .btn-complete {
+            background: var(--accepted-blue);
+            color: var(--white);
+        }
+        .btn-complete:hover:not(:disabled) { 
+            background: #1976D2; 
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        }
+
+        .btn-accept:disabled, .btn-reject:disabled, .btn-action[disabled] {
+            background: #9e9e9e;
+            cursor: not-allowed;
+            opacity: 0.8;
+            color: var(--white);
+        }
+        
+        td.actions {
+            min-width: 220px;
+        }
+
+        .no-data, .dashboard-welcome {
+            padding: 3rem;
+            text-align: center;
+            color: var(--text-gray);
+            font-size: 1.2rem;
+            background: var(--white);
+            border-radius: 15px;
+        }
+        .dashboard-welcome h2 {
+            color: var(--text-dark);
+            margin-bottom: 0.5rem;
+        }
+        
+        td.message {
+            white-space: normal;
+            min-width: 250px;
+        }
+
+        /* --- Footer --- */
+        .footer {
+            padding: 1rem 2rem;
+            text-align: center;
+            font-size: 0.9rem;
+            color: var(--text-gray);
+            border-top: 1px solid #e0e0e0;
+            background: var(--white);
+        }
+        
+        /* --- Responsive Media Queries --- */
+        @media (max-width: 900px) {
+            body {
+                display: block;
+            }
+            .sidebar {
+                position: fixed;
+                left: -260px;
+                height: 100vh;
+            }
+            .sidebar.active {
+                left: 0;
+                box-shadow: 0 0 40px rgba(0,0,0,0.3);
+            }
+            .main-wrapper {
+                width: 100%;
+                margin-left: 0;
+            }
+            .mobile-menu-toggle {
+                display: block;
+            }
+            .admin-email {
+                display: none;
+            }
+            .header {
+                padding: 1rem;
+            }
+            .content {
+                padding: 1rem;
+            }
+            .header-title {
+                font-size: 1.25rem;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            th, td {
+                padding: 0.75rem 0.5rem;
+                font-size: 0.85rem;
+            }
+            .btn-action {
+                padding: 0.4rem 0.6rem;
+                font-size: 0.8rem;
+                gap: 0.25rem;
+            }
+            .status {
+                font-size: 0.75rem;
+                padding: 0.2rem 0.5rem;
+            }
+            
+            .admin-info {
+                gap: 0.5rem;
+            }
+            .btn-logout {
+                padding: 0.5rem 0.8rem;
+                font-size: 0.8rem;
+            }
+            #searchInput {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+    
+    <aside class="sidebar" id="sidebar">
+        <div class="sidebar-header">
+            <i class="fas fa-leaf"></i> Velgo Admin
+        </div>
+        <ul class="sidebar-nav">
+            <li class="sidebar-nav-item">
+                <a href="/admin?view=dashboard" class="sidebar-nav-link {% if current_view == 'dashboard' %}active{% endif %}">
+                    <i class="fas fa-tachometer-alt"></i> Dashboard
+                </a>
+            </li>
+            <li class="sidebar-nav-item">
+                <a href="/admin?view=consultations" class="sidebar-nav-link {% if current_view == 'consultations' %}active{% endif %}">
+                    <i class="fas fa-user-tie"></i> Consultations
+                </a>
+            </li>
+            
+            <li class="nav-divider">Service Bookings</li>
+            
+            {% for service in services_list %}
+            <li class="sidebar-nav-item">
+                <a href="/admin?view={{ service }}" class="sidebar-nav-link {% if current_view == service %}active{% endif %}">
+                    {% if 'Consulting' in service %}<i class="fas fa-user-tie"></i>
+                    {% elif 'Testing' in service %}<i class="fas fa-vial"></i>
+                    {% elif 'Planning' in service %}<i class="fas fa-seedling"></i>
+                    {% elif 'Livestock' in service %}<i class="fas fa-cow"></i>
+                    {% elif 'IoT' in service %}<i class="fas fa-robot"></i>
+                    {% elif 'Management' in service %}<i class="fas fa-chart-line"></i>
+                    {% else %}<i class="fas fa-leaf"></i>
+                    {% endif %}
+                    <span>{{ service }}</span>
+                </a>
+            </li>
+            {% endfor %}
+        </ul>
+    </aside>
+
+    <div class="main-wrapper" id="main-wrapper">
+        
+        <header class="header">
+            <div class="header-title-container">
+                <button class="mobile-menu-toggle" onclick="toggleSidebar()">
+                    <i class="fas fa-bars"></i>
+                </button>
+                <h1 class="header-title">
+                    {% if current_view == 'dashboard' %}Dashboard
+                    {% elif current_view == 'consultations' %}Consultation Requests
+                    {% else %}{{ current_view }}
+                    {% endif %}
+                </h1>
+            </div>
+            <div class="admin-info">
+                <span class="admin-email">Welcome, {{ admin_email }}</span>
+                <a href="{{ url_for('logout') }}" class="btn-logout">Logout <i class="fas fa-sign-out-alt"></i></a>
+            </div>
+        </header>
+
+        <main class="content">
+
+            {% if current_view == 'dashboard' %}
+                <div class="dashboard-welcome">
+                    <h2>Welcome, Admin!</h2>
+                    <p>Please select a category from the sidebar to view bookings and requests.</p>
+                </div>
+            
+            {% elif current_view == 'consultations' %}
+                <div class="table-toolbar">
+                    <input type="text" id="searchInput" onkeyup="filterTable()" placeholder="Search by farmer's name...">
+                </div>
+                <div class="table-container">
+                    <table id="data-table">
+                        <thead>
+                            <tr>
+                                <th>Received At</th>
+                                <th>Name</th>
+                                <th>Status</th>
+                                <th class="actions">Action</th>
+                                <th>Type</th>
+                                <th>Phone</th>
+                                <th class="wrap-text">Email (Contact)</th>
+                                <th class="wrap-text">Booked By (User)</th>
+                                <th>Land Size</th>
+                                <th class="wrap-text">Message</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for row in data %}
+                            <tr>
+                                <td class="timestamp">{{ row.timestamp.strftime('%Y-%m-%d %H:%M') }}</td>
+                                <td class="farmer-name">{{ row.name }}</td>
+                                <td>
+                                    <span class="status status-{{ row.status }}">{{ row.status | capitalize }}</span>
+                                </td>
+                                <td class="actions">
+                                    {% if row.status == 'pending' %}
+                                    <button class="btn-action btn-accept" 
+                                            onclick="handleUpdateStatus(this, 'accepted')" 
+                                            data-doc-id="{{ row.doc_id }}" 
+                                            data-collection="consultations">
+                                        Accept
+                                    </button>
+                                    <button class="btn-action btn-reject" 
+                                            onclick="handleUpdateStatus(this, 'rejected')" 
+                                            data-doc-id="{{ row.doc_id }}" 
+                                            data-collection="consultations">
+                                        Reject
+                                    </button>
+                                    {% elif row.status == 'accepted' %}
+                                    <button class="btn-action btn-complete" 
+                                            onclick="handleUpdateStatus(this, 'completed')" 
+                                            data-doc-id="{{ row.doc_id }}" 
+                                            data-collection="consultations">
+                                        <i class="fas fa-check"></i> Mark Completed
+                                    </button>
+                                    {% elif row.status == 'completed' %}
+                                    <button class="btn-action" disabled><i class="fas fa-check-double"></i> Completed</button>
+                                    {% elif row.status == 'rejected' %}
+                                    <button class="btn-action" disabled><i class="fas fa-times"></i> Rejected</button>
+                                    {% endif %}
+                                </td>
+                                <td>{{ row.type }}</td>
+                                <td>{{ row.phone }}</td>
+                                <td class="wrap-text">{{ row.email }}</td>
+                                <td class="wrap-text">{{ row.user_email }}</td>
+                                <td>{{ row.landSize or 'N/A' }} acres</td>
+                                <td class="message wrap-text">{{ row.message or 'N/A' }}</td>
+                            </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                    {% if not data %}
+                    <p class="no-data">No consultation requests found.</p>
+                    {% endif %}
+                </div>
+
+            {% else %} 
+                <div class="table-toolbar">
+                    <input type="text" id="searchInput" onkeyup="filterTable()" placeholder="Search by farmer's name...">
+                </div>
+                <div class="table-container">
+                    <table id="data-table">
+                        <thead>
+                            <tr>
+                                <th>Received At</th>
+                                <th>Name</th>
+                                <th>Status</th>
+                                <th class="actions">Action</th>
+                                <th>Phone</th>
+                                <th class="wrap-text">Location</th>
+                                <th class="wrap-text">Email (Contact)</th>
+                                <th class="wrap-text">Booked By (User)</th>
+                                <th class="wrap-text">Message</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for row in data %}
+                            <tr>
+                                <td class="timestamp">{{ row.timestamp.strftime('%Y-%m-%d %H:%M') }}</td>
+                                <td class="farmer-name">{{ row.name }}</td>
+                                <td>
+                                    <span class="status status-{{ row.status }}">{{ row.status | capitalize }}</span>
+                                </td>
+                                <td class="actions">
+                                    {% if row.status == 'pending' %}
+                                    <button class="btn-action btn-accept" 
+                                            onclick="handleUpdateStatus(this, 'accepted')" 
+                                            data-doc-id="{{ row.doc_id }}" 
+                                            data-collection="bookings">
+                                        Accept
+                                    </button>
+                                    <button class="btn-action btn-reject" 
+                                            onclick="handleUpdateStatus(this, 'rejected')" 
+                                            data-doc-id="{{ row.doc_id }}" 
+                                            data-collection="bookings">
+                                        Reject
+                                    </button>
+                                    {% elif row.status == 'accepted' %}
+                                    <button class="btn-action btn-complete" 
+                                            onclick="handleUpdateStatus(this, 'completed')" 
+                                            data-doc-id="{{ row.doc_id }}" 
+                                            data-collection="bookings">
+                                        <i class="fas fa-check"></i> Mark Completed
+                                    </button>
+                                    {% elif row.status == 'completed' %}
+                                    <button class="btn-action" disabled><i class="fas fa-check-double"></i> Completed</button>
+                                    {% elif row.status == 'rejected' %}
+                                    <button class="btn-action" disabled><i class="fas fa-times"></i> Rejected</button>
+                                    {% endif %}
+                                </td>
+                                <td>{{ row.phone }}</td>
+                                <td class="wrap-text">{{ row.location }}</td>
+                                <td class="wrap-text">{{ row.email or 'N/A' }}</td>
+                                <td class="wrap-text">{{ row.user_email }}</td>
+                                <td class="message wrap-text">{{ row.message or 'N/A' }}</td>
+                            </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                    {% if not data %}
+                    <p class="no-data">No bookings found for {{ current_view }}.</p>
+                    {% endif %}
+                </div>
+            {% endif %}
+            
+        </main>
+
+        <footer class="footer">
+            &copy; 2024 Velgo Agrisolutions Pvt. Ltd. - Admin Panel
+        </footer>
+    </div>
+
+    <script>
+        function filterTable() {
+            const input = document.getElementById("searchInput");
+            const filter = input.value.toUpperCase();
+            const table = document.getElementById("data-table");
+            const tr = table.getElementsByTagName("tr");
+            for (let i = 1; i < tr.length; i++) {
+                const td = tr[i].querySelector(".farmer-name");
+                if (td) {
+                    const txtValue = td.textContent || td.innerText;
+                    if (txtValue.toUpperCase().indexOf(filter) > -1) {
+                        tr[i].style.display = "";
+                    } else {
+                        tr[i].style.display = "none";
+                    }
+                }
+            }
+        }
+        
+        function toggleSidebar() {
+            document.getElementById('sidebar').classList.toggle('active');
+        }
+
+        async function handleUpdateStatus(button, newStatus) {
+            const docId = button.dataset.docId;
+            const collection = button.dataset.collection;
+            
+            let reason = null;
+            let confirmMessage = `Are you sure you want to ${newStatus} this request?`;
+
+            if (newStatus === 'rejected') {
+                reason = prompt("Please provide a reason for rejection (this will be shown to the user):");
+                if (reason === null) {
+                    return; 
+                }
+                if (!reason) {
+                    reason = "No reason provided.";
+                }
+                confirmMessage = `Are you sure you want to REJECT this request with the reason: "${reason}"?`;
+            } else if (newStatus === 'completed') {
+                confirmMessage = "Are you sure you have called the client and want to mark this request as completed?";
+            }
+
+            if (!confirm(confirmMessage)) {
+                return;
+            }
+
+            const actionCell = button.closest('td');
+            const buttons = actionCell.querySelectorAll('.btn-action');
+            
+            try {
+                buttons.forEach(btn => {
+                    btn.disabled = true;
+                    btn.textContent = "Updating...";
+                });
+
+                const response = await fetch('/api/update_status', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({
+                        doc_id: docId,
+                        collection: collection,
+                        new_status: newStatus,
+                        reason: reason
+                    })
+                });
+                
+                const result = await response.json();
+                
+                if (response.ok && result.status === 'success') {
+                    const statusCell = button.closest('tr').querySelector('.status');
+                    const statusText = newStatus.charAt(0).toUpperCase() + newStatus.slice(1);
+                    statusCell.textContent = statusText;
+                    statusCell.className = `status status-${newStatus}`; 
+                    
+                    let icon = newStatus === 'completed' ? 'fa-check-double' : (newStatus === 'rejected' ? 'fa-times' : 'fa-check');
+                    actionCell.innerHTML = `<button class="btn-action" disabled><i class="fas ${icon}"></i> ${statusText}</button>`;
+                } else {
+                    throw new Error(result.message || 'Failed to update');
+                }
+            } catch (error) {
+                console.error("Error updating status:", error);
+                alert("Error: " + error.message);
+                alert("An error occurred. Reloading the page to restore buttons.");
+                window.location.reload();
+            }
+        }
+    </script>
+</body>
+</html>

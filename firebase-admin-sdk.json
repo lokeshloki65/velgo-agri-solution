@@ -1,0 +1,13 @@
+{
+  "type": "service_account",
+  "project_id": "velgo-ai-agri-solutions",
+  "private_key_id": "8b2f39ed7909937dc1e75d1c5c4e76016a84a1d7",
+  "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvAIBADANBgkqhkiG9w0BAQEFAASCBKYwggSiAgEAAoIBAQDCTCB14ZZzAVRv\nyciUu+8nLU9q8euYxG4Rtef/vv84F6WVynqzrSJ+5sTi40UqJyKs9UhIrZZGljAY\nUuyino7qdoEwb6/x193LqWcJ8jQYMZyvnvZSdzzh7s+ofu05cmh+oTAJqDJNb4Z2\neDUjJL7usy3uR1aISLjnOuCkduW4TItTW9VplLRodXGNU/At4NKE7ms85SuePOQs\nbll/acfcjkukFPYDjxZkvtYFgL7aCRbYgMm5Y8VI+8x8Pl6bx8Le7haTuYWD4FHQ\nkeEVSVMa7nYmwlUIoBfD4IvOflsWnwAb9EfFaiyqriexL25bqF2faDuNy75ev5jC\nz8YzfcDNAgMBAAECggEAUz7onXkEy8tjEO5EaS1IHuHz59800ORAQIhOmS2NDcxb\n3py9C6R/Zh2bd5ZmONRBsBb7XGA7RYztmE5XIqmKk/woB8eie5zAY5T2F7XVChSf\njEMwSE7cH/UAtbGEFBvnl3GaMlkFDFZfJv0Dz0XcJEtSv4eDFKsLxc5dFzn13Ir3\ntC7pbAHu/OpglSroAChnvROXlGpLFDg8R3S/QmZPKsQ94UR/qKt8WULt4Xb3+/+G\nt4uh0Cq9+swQswKMBjSgA0GwgAu+k/qicT4tU+mqR8Mzm7xLhrn59/L8ky+d3FYI\nfrmKG2qWKSwawBhZQenj/ZLdFQQhT54l1YVKTx4RxQKBgQDrp0gRrb2VWtJ6jqeu\ngZmxPuSeta0/GyG+W259/vza1hvwqg73PNDd6cWA4FTLYnc1RF3Z7XN3jwwsnWpX\newEq9gmLlT12PHdsmDUr6SxZfP6nVBRgosSIjRlFSAIZsnnrdH0GvBoWigwUXhkk\nAgFdOZAqGQQ8iXuAg8HLqpFgGwKBgQDTEr1YzLQqj3q+nl039BlTkYQZbAqbcm/j\nDfApCqLUkC9D/zB7Uu+W+P9gPwwnzw/0mv+dGNGDgzJEJsBFTM47R95fc/vnT9wB\nJaXsFYC0pFUkNvEG7HexcLyH3cMPBPsuDC64O/PC1eXFWl7qD8+ziUGcfAQyaoAL\nfD9neMYBNwKBgHLTejyTCjQCo1jwtihEIl3JpaDoKdj8IX8eEkL2wsLnXYnxc4Vp\nbuUTChf4N5k7C5c7DvgnygHSBD6hHbYuy6zhYllPiTlZ0V9q803IOsIINBXY1G0a\nIuXeyxeFNPDMlLf0dQ+ZDKU68xPhniJ7j6qbZ/H7aqMM4s8GZKIXJOtNAoGAT8hR\nkfMuVrgNKWgqzC+UMyZZzFIuYDuNV0G5eYnvqnElrIoVBUiAD4zm2rZ6HcICwe6k\nl/j9mLxKj8AmBQvXGEk+IM5ydSiWfEiCww4NrDpBhILP8FIJnCSE3sZQKKk1WF56\nemEO7qJzS3mxTr/TPoWvKzslSvk+lRjNzoq0LVkCgYA0qh6duwySyJr2ZQZ5Z/3d\nvrlGAhUinq9jzl5c1nkGqNiAHuOvRRZmobpOz2Ia2qRU4vK0CH5RaZiW7YNekPv8\najV++hCgulYvdEKjVkpfoI8sbccITVkd9DZINDcO6anjmcstuSeXgpPl8FVwb2gU\nBZwSlnCg1wiCcPElILBYjA==\n-----END PRIVATE KEY-----\n",
+  "client_email": "firebase-adminsdk-fbsvc@velgo-ai-agri-solutions.iam.gserviceaccount.com",
+  "client_id": "102890971383450790725",
+  "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+  "token_uri": "https://oauth2.googleapis.com/token",
+  "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+  "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/firebase-adminsdk-fbsvc%40velgo-ai-agri-solutions.iam.gserviceaccount.com",
+  "universe_domain": "googleapis.com"
+}
