@@ -9,10 +9,8 @@ app = Flask(__name__)
 CORS(app)
 app.secret_key = 'velgo_admin_secret_key_12345'
 
-# --- Admin session-ஐ 30 நாட்களுக்கு நினைவில் வைத்திருக்க ---
 app.permanent_session_lifetime = timedelta(days=30)
 
-# --- Firebase Admin SDK Initialization ---
 try:
     # (Pastikan 'firebase-admin-sdk.json' கோப்பு உங்கள் app.py உள்ள அதே கோப்புறையில் உள்ளது)
     cred = credentials.Certificate('firebase-admin-sdk.json')
@@ -220,3 +218,4 @@ def index():
 if __name__ == '__main__':
 
     app.run(debug=True)
+
