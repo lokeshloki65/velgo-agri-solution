@@ -1,7 +1,6 @@
 from flask import Flask, render_template, request, redirect, url_for, session, jsonify
 from flask_cors import CORS
 import os
-# --- timedelta-வை இறக்குமதி செய்யவும் ---
 from datetime import datetime, timedelta
 import firebase_admin
 from firebase_admin import credentials, auth, firestore
@@ -219,4 +218,5 @@ def index():
     return render_template('index.html')
 
 if __name__ == '__main__':
+
     app.run(debug=True)
