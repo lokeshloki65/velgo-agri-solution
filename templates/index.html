@@ -1555,7 +1555,6 @@
         }
 
         
-        // --- Admin Panel Navigation ---
         async function authenticateAndRedirectAdmin() {
             if (!currentUser) return;
             document.body.innerHTML = `<div style="display: grid; place-items: center; min-height: 100vh; font-family: 'Segoe UI', sans-serif; background: #F7FCF7; color: #2E562F;">
@@ -1574,20 +1573,21 @@
                     window.location.href = '/admin';
                 } else {
                     alert("Admin authentication failed: " + result.message);
-                    window.location.href = '/';
+                    window.location.href = '/admin';
+
                 }
             } catch (error) {
                 console.error("Error during admin-auth fetch:", error);
+
                 alert("An error occurred. Redirecting to home.");
-                window.location.href = '/';
+                window.location.href = '/admin';
             }
         }
 
 
-        // --- REAL-TIME LISTENER FUNCTIONS ---
 
         function attachBookingListeners(uid) {
-            // Detach old listeners first
+
             detachBookingListeners();
             
             // 1. Listener for Consultations
@@ -1833,22 +1833,20 @@
             return result;
         }
 
-        // --- NEW: Helper for loading state on buttons ---
         function setButtonLoading(button, isLoading) {
             if (!button) return;
             const textEl = button.querySelector('.btn-text');
             if (isLoading) {
                 button.classList.add('loading');
                 button.disabled = true;
-                if (textEl) textEl.style.opacity = '0'; // Hide text
+                if (textEl) textEl.style.opacity = '0'; 
             } else {
                 button.classList.remove('loading');
                 button.disabled = false;
-                if (textEl) textEl.style.opacity = '1'; // Show text
+                if (textEl) textEl.style.opacity = '1'; 
             }
         }
 
-        // --- Chatbot ---
         window.toggleChatbot = function() {
             const chatbot = document.getElementById('chatbotWindow');
             chatbot.style.display = chatbot.style.display === 'flex' ? 'none' : 'flex';
@@ -1856,7 +1854,6 @@
 
         const messagesDiv = document.getElementById('chatbotMessages');
         
-        // NEW: Function to add a message to the chat UI
         function addChatMessage(message, type = 'bot') {
             const msgEl = document.createElement('div');
             msgEl.className = `chat-message ${type}`;
@@ -1880,21 +1877,14 @@
                 typingEl.remove();
             }
         }
-// MODIFIED: Gemini Chatbot Integration
         async function callGeminiAPI(message, history) {
             
-            // ------------------------------------------------------------------
-            // TODO: PASTE YOUR **NEW, SECRET** GEMINI API KEY HERE
-            // (Get it from Google AI Studio. DO NOT SHARE THIS KEY ANYWHERE!)
-            // ------------------------------------------------------------------
+       
             
-            // <--- 1. இங்கே உங்கள் புத்தம் புதிய, ரகசியமான KEY-ஐ பேஸ்ட் செய்யவும்.
             const API_KEY = "AIzaSyC9GZetkBStW43majn65X9L89Un_LGmcBY"; 
             
-            // <--- 2. இது சரியான மாடல் URL, இதை மாற்ற வேண்டாம்.
             const API_URL = `https://generativanguage.googleapis.com/v1beta/models/gemini-1.5-pro-latest:generateContent?key=${API_KEY}`;
             
-            // 1. Get Page Context (இது சரியாக உள்ளது)
             const pageContext = document.body.innerText.substring(0, 4000); 
             const systemInstruction = `
                 You are Velgo Assistant, a helpful chatbot for Velgo Agrisolutions, an agri-consultancy in Tamil Nadu.
@@ -2049,7 +2039,7 @@
                     
                     if (role === 'admin') {
                         // If user is admin, immediately try to authenticate to admin panel
-                        setTimeout(() => { authenticateAndRedirectAdmin(); }, 100);
+                        authenticateAndRedirectAdmin();
                     } else {
                         // Regular client
                         updateNavUI(user, role);
