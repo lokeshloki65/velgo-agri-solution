@@ -11,7 +11,7 @@ app.secret_key = 'velgo_admin_secret_key_12345'
 
 app.permanent_session_lifetime = timedelta(days=30)
 
-try:
+try: 
     cred = credentials.Certificate('firebase-admin-sdk.json')
     firebase_admin.initialize_app(cred)
     db = firestore.client()
@@ -217,5 +217,6 @@ def index():
 if __name__ == '__main__':
 
     app.run(debug=True)
+
 
 
