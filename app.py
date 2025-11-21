@@ -5,7 +5,7 @@ from datetime import datetime, timedelta
 import firebase_admin
 from firebase_admin import credentials, auth, firestore
  
-app = Flask(__name__)
+app = Flask(__name__) 
 CORS(app)
 app.secret_key = 'velgo_admin_secret_key_12345'
 
@@ -217,6 +217,7 @@ def index():
 if __name__ == '__main__':
 
     app.run(debug=True)
+
 
 
 
