@@ -7,7 +7,7 @@ from firebase_admin import credentials, auth, firestore
  
 app = Flask(__name__) 
 CORS(app)
-app.secret_key = 'velgo_admin_secret_key_12345'
+app.secret_key = 'velgo_admin_secret_key_12345' 
 
 app.permanent_session_lifetime = timedelta(days=30)
 
@@ -217,6 +217,7 @@ def index():
 if __name__ == '__main__':
 
     app.run(debug=True)
+
 
 
 
